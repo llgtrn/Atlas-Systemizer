@@ -359,6 +359,32 @@ fn run(args: &[String]) -> Result<(), String> {
                 json(&serde_json::json!({ "path": out, "root_id": root }))?
             );
         }
+        [cmd, sub, rest @ ..] if cmd == "weights" && sub == "census" => {
+            // G163 (ADR 0078): the physical census of a SafeTensors weight container -- storage
+            // facts and payload digests; semantic roles stay UNKNOWN.
+            let artifact =
+                value(rest, "--artifact")?.ok_or("weights census requires --artifact")?;
+            let census =
+                runtime::weights::census_file(&artifact).map_err(|e| format!("{artifact}: {e}"))?;
+            let text = json(&census)? + "\n";
+            match value(rest, "--out")? {
+                Some(out) => write_report_to_out(&out, &text)?,
+                None => print!("{text}"),
+            }
+        }
+        [cmd, sub, rest @ ..] if cmd == "weights" && sub == "construct" => {
+            // G163: a SafeTensors container constructed mechanically from the census of
+            // `--artifact`, its payload streamed and digest-verified, then censused again.
+            let artifact =
+                value(rest, "--artifact")?.ok_or("weights construct requires --artifact")?;
+            let out = value(rest, "--out")?.ok_or("weights construct requires --out")?;
+            let outcome = runtime::weights::construct_file(&artifact, &out)
+                .map_err(|e| format!("{artifact}: {e}"))?;
+            println!("{}", json(&outcome)?);
+            if !outcome.content_preserved {
+                return Err("WEIGHT_CONTENT_NOT_PRESERVED".into());
+            }
+        }
         [cmd, sub, rest @ ..] if cmd == "design" && sub == "roots" => {
             // G148: the FUNCTION_IDENTITY roots of a verified container named `--function`.
             let atlas = value(rest, "--atlas")?.ok_or("design roots requires --atlas")?;
@@ -1142,7 +1168,7 @@ fn run(args: &[String]) -> Result<(), String> {
         }
         _ => {
             return Err(
-                "usage: atlas-systemizer <contract|systemize|docs audit|code analyze|parse|check|graph|observe|genome|search|create|physical|product|census certificate|adl derive|integrity envelope|integrity report|atlas pack|atlas verify|atlas seal|seal gate|recensus snapshot|recensus prove|donors working-set|work prepare|agent|sandbox probe|verification self> ..."
+                "usage: atlas-systemizer <contract|systemize|docs audit|code analyze|parse|check|graph|observe|genome|search|create|physical|product|census certificate|adl derive|integrity envelope|integrity report|atlas pack|atlas verify|atlas seal|seal gate|weights census|weights construct|recensus snapshot|recensus prove|donors working-set|work prepare|agent|sandbox probe|verification self> ..."
                     .into(),
             );
         }

@@ -34,6 +34,7 @@ pub mod temporal;
 pub mod verification;
 pub mod visual;
 pub mod vocabulary;
+pub mod weights;
 
 pub use capability::{WorkPrepareReport, WorkRequest};
 pub use census::{

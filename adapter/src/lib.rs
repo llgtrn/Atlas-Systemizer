@@ -8,6 +8,7 @@ pub mod dependency;
 pub mod semantic;
 pub mod source;
 pub mod vcs;
+pub mod weights;
 
 pub use dependency::{ManifestTargets, census_cargo_workspace, manifest_targets};
 pub use semantic::rust::RUST_SEMANTIC_EXTRACTOR_ID;

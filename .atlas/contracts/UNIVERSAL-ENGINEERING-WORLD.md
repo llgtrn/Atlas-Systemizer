@@ -112,6 +112,52 @@ Every admitted input is conceptually a typed artifact with the following fields:
 
 Today the inventory carries identity, path, kind (file, symlink, policy boundary, special), disposition, language and digest. Semantic representations exist only for source languages at L3 and above. Non-code classes are DEBT-ARTIFACT_SEMANTICS, and the first attack, NA-ARTIFACT-SEMANTICS-IMAGE, lifts images from L0 to L3.
 
+## Weight artifacts (G163, ADR 0078)
+
+Neural-network weights are an artifact class under DEBT-ARTIFACT_SEMANTICS. They extend the census, construction and provenance machinery above. There is no separate subsystem and there are no pairwise format converters: every format is censused into one physical record, and every output is constructed from that record.
+
+**Two layers, never merged.**
+- *Physical* (`atlas.weight-census.v1`, EXPERIMENTAL): the artifact digest and length, the payload offset and length, and free-form metadata. Per tensor: its name, dtype, shape, payload byte range and BLAKE3 digest. Ranges tile the payload exactly.
+- *Semantic*: which role a tensor plays (embedding, attention projection, norm scale, quantization scale or zero point), and which architecture it realizes. It is UNKNOWN in every census today. A tensor name is evidence to be checked, never a role.
+
+**Payloads stay outside the container.** `.atlas` v1 is THIN: a weight census references its payload by artifact digest, byte range and per-tensor digest, and never carries the bytes. `.atlasx` projects a SelectedDesign and is not a weight store. Activation of self-hosted weights is a separate admission event (`ORGANISM-MODEL-ADMISSION.md`).
+
+**Mechanical construction.** An output is written only from the typed census record and from source byte ranges verified against their digests. The header is rebuilt from the record, never copied, and the AI writes no bytes. A construction claims content preservation only after the output's own census matches the source's.
+
+**Preservation classes.**
+- `LOSSLESS`: content equal, bytes may differ.
+- `REVERSIBLE_WITH_RETAINED`: exact reconstruction is claimable only while the retained residual is present.
+- `LOSSY`: never exact.
+
+Quantization, dtype casts and pruning are LOSSY unless they retain a residual.
+
+**Security.** Parsing is data-only:
+- bounded header lengths, with duplicate keys, unknown fields and unknown dtypes refused;
+- the structure checked before any payload byte is read;
+- streaming in fixed chunks.
+
+Pickle-based checkpoints are never unpickled: no format other than SafeTensors is read today, and a PyTorch zip archive may later (W5) be censused only as a zip of data records, never by executing its pickle.
+
+**Staged roadmap** (NA-ARTIFACT-SEMANTICS-WEIGHTS and successors):
+
+| Stage | Capability | Maturity |
+|---|---|---|
+| W1 | SafeTensors physical census, lossless mechanical re-encoding, CLI `weights census` / `weights construct` | EXPERIMENTAL, verified by tests and the reference implementation as oracle |
+| W2 | weight census records in the self census (typed record family, inventory class, support ladder level) | PLANNED (NA-WEIGHT-CENSUS-RECORDS) |
+| W3 | semantic role mapping from structural evidence (shape families, tying, graph metadata), with names as hints only | PLANNED (NA-WEIGHT-ROLES) |
+| W4 | transforms with typed preservation: dtype casts, quantization with a retained residual, sharding and merging | PLANNED (NA-WEIGHT-TRANSFORMS) |
+| W5 | further formats censused into the same record: GGUF, ONNX initializers, PyTorch zip archives (no pickle), MLX | PLANNED (NA-WEIGHT-FORMATS), each after its donor replay |
+
+**Donor classification.**
+- ggml-org/llama.cpp (GGUF, quantization kernels)
+- huggingface/safetensors (format)
+- huggingface/transformers (architecture configs, name conventions)
+- pytorch/pytorch (checkpoint archives)
+- onnx/onnx (graph initializers)
+- ml-explore/mlx (array formats)
+
+These families are explicitly authorized FULL_OSS_REPLAY donors, all NEVER_REPLAYED. Each is replayed one at a time at an exact pin, with its license verified at that pin. Their knowledge is classified per area (format, quantization, architecture, runtime) as mechanism or reference. Nothing is absorbed or extinct until its replay decides so.
+
 ## Product model and capability-first design (conceptual)
 
 Above language and platform, an application is modelled as:
@@ -143,6 +189,8 @@ The following claims are false, and the repository must not make them:
 | "universal" | one backend or language is hardcoded into the core |
 | "the same application" across targets | the builds share no semantic identity |
 | "lossless transformation" | there is no provenance or evidence |
+| "weight support" or "understands the model" | only the physical layer is censused and roles are UNKNOWN |
+| "lossless quantization" | no retained residual reconstructs the original exactly |
 | "target compatible" | there is no capability check against a target profile |
 
 Enforcement:

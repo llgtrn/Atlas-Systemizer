@@ -17,6 +17,7 @@ pub mod seal;
 pub mod self_reconstruction;
 pub mod verification;
 pub mod visual;
+pub mod weights;
 
 use atlas_core::{
     AdlCompileReport, AdlProgram, CLI_API, CodingAdmission, ConstraintResult, ConstraintVerdict,

@@ -54,7 +54,7 @@ External model APIs are admitted as capability-provider bindings with provider/m
 
 ## Self-hosted models
 
-Self-hosted model weights may be content-addressed Atlas artifacts/shards. Activation remains a separate admission event.
+Self-hosted model weights may be content-addressed Atlas artifacts/shards. Activation remains a separate admission event. Their physical census, mechanical construction and preservation classes are defined in `UNIVERSAL-ENGINEERING-WORLD.md` (Weight artifacts, ADR 0078); a census never makes weights active.
 
 ## Hybrid organisms
 

@@ -1,0 +1,163 @@
+{
+  "schema": "atlas.weight-oracle-evidence.v1",
+  "generation": "G163",
+  "decision": ".atlas/decisions/0078-weight-artifacts-physical-census-and-mechanical-construction.md",
+  "oracle": {
+    "implementation": "safetensors 0.4.5 (PyPI wheel) with numpy 2.4.6",
+    "role": "black-box writer and reader in a scratch virtual environment; never an Atlas dependency; no donor source materialized or read",
+    "license_note": "used as a tool, nothing copied"
+  },
+  "fixture": {
+    "written_by": "the oracle (save_file) from seeded random arrays",
+    "tensors": [
+      {
+        "name": "counts",
+        "dtype": "I64",
+        "shape": [
+          5
+        ],
+        "payload": {
+          "start": 0,
+          "end": 40
+        }
+      },
+      {
+        "name": "model.layers.0.norm",
+        "dtype": "F64",
+        "shape": [
+          32
+        ],
+        "payload": {
+          "start": 40,
+          "end": 296
+        }
+      },
+      {
+        "name": "model.layers.0.attn.q.weight",
+        "dtype": "F32",
+        "shape": [
+          32,
+          32
+        ],
+        "payload": {
+          "start": 296,
+          "end": 4392
+        }
+      },
+      {
+        "name": "scalar",
+        "dtype": "I32",
+        "shape": [],
+        "payload": {
+          "start": 4392,
+          "end": 4396
+        }
+      },
+      {
+        "name": "model.embed.weight",
+        "dtype": "F16",
+        "shape": [
+          64,
+          32
+        ],
+        "payload": {
+          "start": 4396,
+          "end": 8492
+        }
+      },
+      {
+        "name": "bytes",
+        "dtype": "U8",
+        "shape": [
+          13
+        ],
+        "payload": {
+          "start": 8492,
+          "end": 8505
+        }
+      },
+      {
+        "name": "empty",
+        "dtype": "U8",
+        "shape": [
+          0,
+          4
+        ],
+        "payload": {
+          "start": 8505,
+          "end": 8505
+        }
+      },
+      {
+        "name": "mask",
+        "dtype": "BOOL",
+        "shape": [
+          3,
+          7
+        ],
+        "payload": {
+          "start": 8505,
+          "end": 8526
+        }
+      }
+    ],
+    "metadata": {
+      "format": "pt",
+      "producer": "oracle"
+    },
+    "artifact_digest": "blake3-256:ea9be6755e575229d66d660d4127e74043f68adbd2f6aa376e8e20c1f517bc96",
+    "artifact_bytes": 9150,
+    "roles": "UNKNOWN"
+  },
+  "construction": {
+    "command": "atlas-systemizer weights construct",
+    "output_digest": "blake3-256:52e8edb8915deab756e40ccadf8a4ce6b3cc720df0288f850254cf25ae3f8698",
+    "bytes": 9150,
+    "content_preserved": true,
+    "preservation": "LOSSLESS"
+  },
+  "differential": [
+    {
+      "question": "does the reference reader load Atlas's constructed output with every tensor and the metadata equal?",
+      "result": "yes: 8 of 8 tensors equal in dtype, shape and values; metadata equal",
+      "classification": "BOTH_CORRECT_DIFFERENT_ABSTRACTION"
+    },
+    {
+      "question": "is the constructed output byte-identical to the oracle's file?",
+      "result": "no: equal length (9,150 bytes), header keys ordered differently (the oracle writes __metadata__ then insertion order, Atlas sorts); the format does not fix header key order, so content equality is the claim, not bytes",
+      "classification": "BOTH_CORRECT_DIFFERENT_ABSTRACTION"
+    },
+    {
+      "question": "is Atlas's canonical form a fixed point?",
+      "result": "yes: constructing again from Atlas's output is byte-identical",
+      "classification": "ATLAS_CORRECT"
+    }
+  ],
+  "scale": {
+    "artifact": "16 F32 tensors of 1024 x 16384 written by the oracle (1,073,743,176 bytes)",
+    "build": "debug",
+    "census": {
+      "peak_resident_kb": 14588,
+      "seconds": 134.5
+    },
+    "construct": {
+      "peak_resident_kb": 15100,
+      "seconds": 333.5,
+      "includes": "census of the source, streamed copy with digest checks, census of the output"
+    },
+    "oracle_read_back": "16 of 16 tensors equal"
+  },
+  "falsification": {
+    "mutants": 12,
+    "killed": 12
+  },
+  "maturity": {
+    "W1_safetensors_physical_census_and_lossless_construction": "EXPERIMENTAL (verified by tests and this oracle)",
+    "W2_self_census_record_family": "PLANNED",
+    "W3_semantic_roles": "PLANNED (roles UNKNOWN)",
+    "W4_transforms": "PLANNED",
+    "W5_other_formats": "PLANNED"
+  },
+  "absorbed": "nothing",
+  "extinct": "nothing (no donor materialized)"
+}

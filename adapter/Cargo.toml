@@ -27,14 +27,17 @@ proc-macro2 = { version = "1.0.107", features = ["span-locations"] }
 tree-sitter = "0.25"
 tree-sitter-typescript = "0.23"
 tree-sitter-javascript = "0.23"
+# G163 (ADR 0078): data-only JSON for the SafeTensors header (`src/weights/safetensors.rs`). Already
+# resolved through `core`; declaring it here adds no crate. The header is parsed as data and
+# checked field by field -- nothing in a weight container is executed or deserialized into code.
+serde_json = { workspace = true }
 
 [build-dependencies]
 # build.rs digests the extractor sources with Atlas's own BLAKE3 (ADR 0008).
 atlas_core = { package = "core", path = "../core" }
 
 [dev-dependencies]
-# Verification-only: parses `cargo metadata`'s JSON output for the independent dependency-census
-# differential oracle (`src/dependency/cargo_oracle.rs`). Never a production dependency -- kept out
-# of `[dependencies]` so `census_cargo_workspace` itself cannot reach it, matching the "ingestion is
-# not execution" security boundary this oracle deliberately sits outside of.
-serde_json = { workspace = true }
+# The independent dependency-census differential oracle (`src/dependency/cargo_oracle.rs`) parses
+# `cargo metadata`'s JSON output in tests only: `census_cargo_workspace` never runs cargo, matching
+# the "ingestion is not execution" security boundary this oracle deliberately sits outside of.
+# (serde_json itself is a production dependency since G163, for the SafeTensors header.)
