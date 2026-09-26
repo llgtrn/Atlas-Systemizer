@@ -722,14 +722,19 @@ objective = "FULL_OSS_REPLAY R7 zed-industries/zed at 0eda7703f6c8 (done: Atlas 
 [[planned_generation]]
 id = "G163"
 priority = "P0"
-objective = "native attack queue head (pressure map, dependency and construction-reachability order): NA-QUANTITY-SIDE-REPORTS (DEBT-QUANTITY_UNITS) -- physical and product reports enter the census: derived quantities as typed facts with kind and status, not side JSON"
+objective = "owner-directed weight-artifact upgrade, NA-ARTIFACT-SEMANTICS-WEIGHTS (DEBT-ARTIFACT_SEMANTICS; done: weights an artifact class with a physical layer -- atlas.weight-census.v1, dtype, shape, payload range and BLAKE3 digest per tensor, ranges tiling the payload -- apart from a semantic layer whose roles stay UNKNOWN; SafeTensors censused streamed and data-only; construction mechanical from the record and digest-verified ranges, content preservation checked by re-census; LOSSLESS / REVERSIBLE_WITH_RETAINED / LOSSY typed; the reference implementation reads the output back equal; 12 mutants killed; capability epoch E12; ADR 0078). It displaced NA-QUANTITY-SIDE-REPORTS by one native slot; the replay cadence holds"
 
 [[planned_generation]]
 id = "G164"
 priority = "P0"
-objective = "FULL_OSS_REPLAY R8 google/crubit (QUEUED): Rust/C++ interop facing the strongest Atlas (E11 or later) -- FFI acquire/release pairs, cyclic dev-dependency graphs and import resolution on a real interop workspace; license verified at the pin; the admitted legacy checkout extinguished with it"
+objective = "FULL_OSS_REPLAY R8 google/crubit (QUEUED): Rust/C++ interop facing the strongest Atlas (E12 or later) -- FFI acquire/release pairs, cyclic dev-dependency graphs and import resolution on a real interop workspace; license verified at the pin; the admitted legacy checkout extinguished with it"
 
 [[planned_generation]]
-id = "G165+"
+id = "G165"
 priority = "P0"
-objective = "FULL_OSS_REPLAY every other generation, interleaved with the native_attack_queue in order (ESSENTIAL-COMPLEXITY-DEBT.toml), SELF_RECONSTRUCTION (NA-SELF-RECONSTRUCTION-BODIES, then SH1 on the next target) and an AGENT_MISSION at least every five generations; frontier expansion stays frozen until FOUNDATIONAL_ATLAS_READY"
+objective = "native attack queue head (pressure map, dependency and construction-reachability order): NA-QUANTITY-SIDE-REPORTS (DEBT-QUANTITY_UNITS) -- physical and product reports enter the census: derived quantities as typed facts with kind and status, not side JSON"
+
+[[planned_generation]]
+id = "G166+"
+priority = "P0"
+objective = "FULL_OSS_REPLAY every other generation, interleaved with the native_attack_queue in order (ESSENTIAL-COMPLEXITY-DEBT.toml; the weight stages NA-WEIGHT-CENSUS-RECORDS, NA-WEIGHT-ROLES, NA-WEIGHT-TRANSFORMS and NA-WEIGHT-FORMATS take their place in it, each weight format after its donor replay), SELF_RECONSTRUCTION (NA-SELF-RECONSTRUCTION-BODIES, then SH1 on the next target) and an AGENT_MISSION at least every five generations; frontier expansion stays frozen until FOUNDATIONAL_ATLAS_READY"

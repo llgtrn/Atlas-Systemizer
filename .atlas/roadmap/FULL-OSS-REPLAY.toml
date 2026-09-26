@@ -13,13 +13,13 @@ campaign_start = "G151"
 materialization_root = ".atlas/.cache/donors"
 max_materialized = 1
 max_non_replay_between = 1
-current_epoch = "E11"
+current_epoch = "E12"
 next_replay = "google/crubit"
-next_replay_reason = "priority after R7: the strongest Atlas (E11) now converges on re-export cycles and names why it withholds; crubit is Rust/C++ interop -- FFI acquire/release pairs are a named RESOURCE residual (replay R3) and C++ has no frontend -- its dependency graph holds genuine cycles through member dev-dependencies, and its admitted legacy checkout is still materialized under .atlas/temporary/donors; Apache-2.0 WITH LLVM-exception per its LICENSE at the recorded pin, to be verified at the pin; starvation: every NEVER_REPLAYED donor keeps its place in the canonical order behind it"
+next_replay_reason = "priority after R7: the strongest Atlas (E12) converges on re-export cycles and names why it withholds (E11), and reads weight artifacts physically (E12, which touches no Rust interop mechanism); crubit is Rust/C++ interop -- FFI acquire/release pairs are a named RESOURCE residual (replay R3) and C++ has no frontend -- its dependency graph holds genuine cycles through member dev-dependencies, and its admitted legacy checkout is still materialized under .atlas/temporary/donors; Apache-2.0 WITH LLVM-exception per its LICENSE at the recorded pin, to be verified at the pin; starvation: every NEVER_REPLAYED donor keeps its place in the canonical order behind it"
 
 [counts]
-total = 160
-never_replayed = 154
+total = 166
+never_replayed = 160
 queued = 1
 materialized = 0
 processed = 5
@@ -29,7 +29,7 @@ revalidation_required = 0
 license_review_required = 0
 source_extinct = 5
 blocked_on_user = 6
-remaining = 155
+remaining = 161
 
 [[epoch]]
 id = "E0"
@@ -103,6 +103,12 @@ generation = "G162"
 commit = "0f6ba05346cd5a5672b92c4bddffddedcf42298a"
 capability = "import resolution converges on re-export cycles: a period-2 oscillation of the fixed point (a placeholder travelling around a pub-use cycle) is merged conservatively instead of opening every module; every open scope records its cause and every withheld path call names it in the census, the component, GAP-OPEN-SCOPE and the unknowns lens"
 
+[[epoch]]
+id = "E12"
+generation = "G163"
+commit = "f374f8c4e745e2e996a87f0ae90acbafe945eef6"
+capability = "a weight artifact is an artifact class: SafeTensors censused streamed and data-only into a physical record (dtype, shape, payload range and digest per tensor, roles UNKNOWN) and constructed mechanically from that record and digest-verified payload ranges, content preservation checked by re-census"
+
 [[repository]]
 key = "666ghj/bettafish"
 remote = "https://github.com/666ghj/BettaFish.git"
@@ -156,7 +162,7 @@ replays = ["R1 G151 E0->E1 .atlas/evidence/replay/R1-gitnexus.json", "R2 G152 E1
 terminal_state = "REFERENCE_ONLY_UNTIL_TRIGGER"
 decided_at_epoch = "E9"
 trigger_status = "CURRENT"
-trigger_checked_at_epoch = "E11"
+trigger_checked_at_epoch = "E12"
 revalidation_trigger = "an epoch that adds member/this call resolution for TypeScript (NA-MULTILANGUAGE), execution flows (NA-EXECUTION-FLOWS) or hunk seeds (NA-HUNK-SEEDS) re-opens this verdict: re-census the same pin"
 source_path = ".atlas/.cache/donors/gitnexus"
 source_extinct = true
@@ -655,6 +661,18 @@ physically_present_legacy = false
 replay_status = "NEVER_REPLAYED"
 
 [[repository]]
+key = "ggml-org/llama.cpp"
+remote = "https://github.com/ggml-org/llama.cpp"
+names = ["llama.cpp", "ggml", "GGUF"]
+sources = ["owner directive (G163 weight-artifact upgrade, ADR 0078): explicitly authorized weight-format donor family, census roadmap stage W5; license verified at the pin when selected"]
+historical_generations = []
+historical_verdicts = []
+license = "UNRECORDED"
+historical_pins = []
+physically_present_legacy = false
+replay_status = "NEVER_REPLAYED"
+
+[[repository]]
 key = "gimli-rs/object"
 remote = "https://github.com/gimli-rs/object.git"
 names = ["gimli-rs/object", "object"]
@@ -893,6 +911,30 @@ historical_generations = []
 historical_verdicts = ["-: CANDIDATE (lifecycle)", "-: CONSUMER_GATED (working_set)", "-: CANDIDATE_NOT_ADMITTED (status)"]
 license = "Apache-2.0"
 historical_pins = ["e0118ade2f60234c41bacf40330a7e2f61108849"]
+physically_present_legacy = false
+replay_status = "NEVER_REPLAYED"
+
+[[repository]]
+key = "huggingface/safetensors"
+remote = "https://github.com/huggingface/safetensors"
+names = ["safetensors"]
+sources = ["owner directive (G163 weight-artifact upgrade, ADR 0078): explicitly authorized weight-format donor family, census roadmap stage W5; license verified at the pin when selected"]
+historical_generations = []
+historical_verdicts = []
+license = "UNRECORDED"
+historical_pins = []
+physically_present_legacy = false
+replay_status = "NEVER_REPLAYED"
+
+[[repository]]
+key = "huggingface/transformers"
+remote = "https://github.com/huggingface/transformers"
+names = ["transformers"]
+sources = ["owner directive (G163 weight-artifact upgrade, ADR 0078): explicitly authorized weight-format donor family, census roadmap stage W5; license verified at the pin when selected"]
+historical_generations = []
+historical_verdicts = []
+license = "UNRECORDED"
+historical_pins = []
 physically_present_legacy = false
 replay_status = "NEVER_REPLAYED"
 
@@ -1138,6 +1180,18 @@ physically_present_legacy = false
 replay_status = "NEVER_REPLAYED"
 
 [[repository]]
+key = "ml-explore/mlx"
+remote = "https://github.com/ml-explore/mlx"
+names = ["mlx"]
+sources = ["owner directive (G163 weight-artifact upgrade, ADR 0078): explicitly authorized weight-format donor family, census roadmap stage W5; license verified at the pin when selected"]
+historical_generations = []
+historical_verdicts = []
+license = "UNRECORDED"
+historical_pins = []
+physically_present_legacy = false
+replay_status = "NEVER_REPLAYED"
+
+[[repository]]
 key = "moby/moby"
 remote = "https://github.com/moby/moby.git"
 names = ["Docker"]
@@ -1256,6 +1310,18 @@ historical_generations = []
 historical_verdicts = ["-: CANDIDATE (lifecycle)", "-: CONSUMER_GATED (working_set)", "-: CANDIDATE_NOT_ADMITTED (status)"]
 license = "BSD-3-Clause | BSD-3-Clause (Modified BSD; GH API NOASSERTION)"
 historical_pins = ["4df2f39c016e90a5ffb3c6e71470146077100200"]
+physically_present_legacy = false
+replay_status = "NEVER_REPLAYED"
+
+[[repository]]
+key = "onnx/onnx"
+remote = "https://github.com/onnx/onnx"
+names = ["onnx"]
+sources = ["owner directive (G163 weight-artifact upgrade, ADR 0078): explicitly authorized weight-format donor family, census roadmap stage W5; license verified at the pin when selected"]
+historical_generations = []
+historical_verdicts = []
+license = "UNRECORDED"
+historical_pins = []
 physically_present_legacy = false
 replay_status = "NEVER_REPLAYED"
 
@@ -1484,6 +1550,18 @@ historical_generations = []
 historical_verdicts = ["-: CANDIDATE (lifecycle)", "-: CONSUMER_GATED (working_set)", "-: MISSING (status)"]
 license = "Apache-2.0"
 historical_pins = ["ae65fa4b3dc0eaa243c1a5c29f0710e667c68ece"]
+physically_present_legacy = false
+replay_status = "NEVER_REPLAYED"
+
+[[repository]]
+key = "pytorch/pytorch"
+remote = "https://github.com/pytorch/pytorch"
+names = ["pytorch", "torch"]
+sources = ["owner directive (G163 weight-artifact upgrade, ADR 0078): explicitly authorized weight-format donor family, census roadmap stage W5; license verified at the pin when selected"]
+historical_generations = []
+historical_verdicts = []
+license = "UNRECORDED"
+historical_pins = []
 physically_present_legacy = false
 replay_status = "NEVER_REPLAYED"
 
@@ -1745,7 +1823,7 @@ replays = ["R4 G156 E4->E5 .atlas/evidence/replay/R4-salsa.json"]
 terminal_state = "REFERENCE_ONLY_UNTIL_TRIGGER"
 decided_at_epoch = "E5"
 trigger_status = "CURRENT"
-trigger_checked_at_epoch = "E11"
+trigger_checked_at_epoch = "E12"
 revalidation_trigger = "NA-CLOSURE-CONSUMER starts: a consumer recomputing inside the impact closure should cut off propagation when a recomputed function keeps its records (salsa backdating); re-census the same pin"
 source_path = ".atlas/.cache/donors/salsa"
 source_extinct = true
@@ -1945,7 +2023,7 @@ gaps = ["DEBT-MULTILANGUAGE: C source (28 .c, 35 .h) has no frontend; the implem
 terminal_state = "EXTERNAL_BOUNDARY"
 decided_at_epoch = "E4"
 trigger_status = "CURRENT"
-trigger_checked_at_epoch = "E11"
+trigger_checked_at_epoch = "E12"
 revalidation_trigger = "a C frontend (DEBT-MULTILANGUAGE) or a native TypeScript/JavaScript parser replacing the syntax substrate re-opens this verdict: re-census the same pin"
 verdict_history = ["G65: REFERENCE_ONLY (historical, terminal_state; DEBT-MULTILANGUAGE rejected)", "E4 (G154, R3): EXTERNAL_BOUNDARY -- Atlas links it as the syntax substrate of its TypeScript/JavaScript profile (a parse is never semantic support); mechanism studied: the Rust-to-C boundary, absorbed as FOREIGN_FUNCTION records and include splicing"]
 replays = ["R3 G154 E3->E4 .atlas/evidence/replay/R3-tree-sitter.json"]
@@ -2077,7 +2155,7 @@ replays = ["R5 G158 E6->E7 .atlas/evidence/replay/R5-xyflow.json"]
 terminal_state = "REFERENCE_ONLY_UNTIL_TRIGGER"
 decided_at_epoch = "E7"
 trigger_status = "CURRENT"
-trigger_checked_at_epoch = "E11"
+trigger_checked_at_epoch = "E12"
 revalidation_trigger = "member/this call or JSX resolution for TypeScript, a Svelte frontend, or studio graph interaction becoming a planned capability re-opens this verdict: re-census the same pin"
 source_path = ".atlas/.cache/donors/xyflow"
 source_extinct = true
@@ -2123,6 +2201,7 @@ replays = ["R7 G162 E10->E11 .atlas/evidence/replay/R7-zed.json"]
 terminal_state = "REFERENCE_ONLY_UNTIL_TRIGGER"
 decided_at_epoch = "E11"
 trigger_status = "CURRENT"
+trigger_checked_at_epoch = "E12"
 revalidation_trigger = "a staged census that fits the whole workspace, dependency macro expansion or a proc-macro oracle bounding macro-opened scopes, or non-std resources (async file handles) entering the resource table re-opens this verdict: re-census the same pin"
 source_path = ".atlas/.cache/donors/zed"
 source_extinct = true

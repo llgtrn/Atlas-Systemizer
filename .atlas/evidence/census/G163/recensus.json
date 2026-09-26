@@ -1,0 +1,662 @@
+{
+  "schema": "atlas.self-recensus-report.v1",
+  "generation": "G163",
+  "base_revision": "0f6ba05346cd5a5672b92c4bddffddedcf42298a",
+  "candidate_revision": "8dadebb5d133597f155d61a009d67be512a3630b",
+  "candidate_dirty": true,
+  "before_census_digest": "blake3-256:69e37d0521b38e9ce9a3af3863ace6e8a371457fda38424f0c552abc5b296e73",
+  "after_census_digest": "blake3-256:4b433e84a6b41e8fc930c352ae8eaec08415c270e59decd737a3bfd894329d70",
+  "replay_digest": "blake3-256:4b433e84a6b41e8fc930c352ae8eaec08415c270e59decd737a3bfd894329d70",
+  "inventory_delta": {
+    "created": [
+      "adapter/src/weights/mod.rs",
+      "adapter/src/weights/safetensors.rs",
+      "adapter/src/weights/safetensors/tests.rs",
+      "core/src/weights/mod.rs",
+      "core/src/weights/tests.rs",
+      "runtime/src/weights.rs"
+    ],
+    "modified": [
+      "adapter/Cargo.toml",
+      "adapter/src/lib.rs",
+      "apps/cli/src/main.rs",
+      "core/src/lib.rs",
+      "runtime/src/lib.rs"
+    ],
+    "deleted": []
+  },
+  "semantic_delta": {
+    "changed": [
+      "adapter/src/lib.rs",
+      "apps/cli/src/main.rs",
+      "core/src/lib.rs",
+      "runtime/src/lib.rs"
+    ],
+    "counts": {
+      "fact:FunctionIdentity|OBSERVED": 55,
+      "fact:FunctionSignature|OBSERVED": 36,
+      "fact:SemanticObligation|OBSERVED": 27,
+      "fact:SemanticObligation|UNKNOWN": 81,
+      "fact:SemanticObligation|UNSUPPORTED": 6,
+      "fact:SourceArtifact|OBSERVED": 12,
+      "fact:Symbol|OBSERVED": 107,
+      "fact:Type|DERIVED": 31,
+      "fact:Type|OBSERVED": 80,
+      "record:CALL|DERIVED": 78,
+      "record:CALL|OBSERVED": 485,
+      "record:CONTROL_FLOW|INFERRED": 72,
+      "record:CONTROL_FLOW|OBSERVED": 159,
+      "record:DATA_FLOW|OBSERVED": 830,
+      "record:EFFECT|DERIVED": 9,
+      "record:EFFECT|INFERRED": 83,
+      "record:FUNCTION_IDENTITY|OBSERVED": 55,
+      "record:FUNCTION_SIGNATURE|OBSERVED": 36,
+      "record:OWNERSHIP|OBSERVED": 230,
+      "record:PERSISTENCE|DERIVED": 2,
+      "record:PERSISTENCE|INFERRED": 1,
+      "record:RESOURCE|DERIVED": 3,
+      "record:SYMBOL|OBSERVED": 107,
+      "record:TYPE|DERIVED": 31,
+      "record:TYPE|OBSERVED": 80
+    }
+  },
+  "dependency_delta": {
+    "added": [
+      "adapter -> serde_json@1.0.151 (Registry) [Some(Runtime)]"
+    ],
+    "removed": [
+      "adapter -> serde_json@1.0.151 (Registry) [Some(Dev)]"
+    ]
+  },
+  "dependency_state": [
+    "Closed",
+    "Closed"
+  ],
+  "graph_delta": {
+    "graph_bindings": 6,
+    "graph_edges": 3093,
+    "graph_nodes": 2353
+  },
+  "obligation_delta": {
+    "obligation:CALL|OBSERVED": 3,
+    "obligation:CALL|UNKNOWN": 9,
+    "obligation:CONCURRENCY|UNKNOWN": 12,
+    "obligation:CONTROL_FLOW|UNKNOWN": 6,
+    "obligation:DATA_FLOW|UNKNOWN": 6,
+    "obligation:EFFECT|UNKNOWN": 12,
+    "obligation:FUNCTION_IDENTITY|OBSERVED": 6,
+    "obligation:FUNCTION_SIGNATURE|OBSERVED": 6,
+    "obligation:OWNERSHIP|UNKNOWN": 6,
+    "obligation:PERSISTENCE|UNKNOWN": 12,
+    "obligation:RESOURCE|UNKNOWN": 6,
+    "obligation:RESOURCE|UNSUPPORTED": 6,
+    "obligation:STATE|UNKNOWN": 6,
+    "obligation:SYMBOL|OBSERVED": 6,
+    "obligation:TYPE|OBSERVED": 6,
+    "obligation:TYPE|UNKNOWN": 6
+  },
+  "adl_delta": {
+    "added": [],
+    "removed": []
+  },
+  "entity_delta": [
+    {
+      "kind": "CHANGED",
+      "before": [
+        "`apps/cli` run()."
+      ],
+      "after": [
+        "`apps/cli` run()."
+      ],
+      "evidence": "body"
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "adapter weights/safetensors/`impl:From<io::Error> for WeightError`/from()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "adapter weights/safetensors/`impl:fmt::Display for WeightError`/fmt()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "adapter weights/safetensors/`impl:serde::Deserialize<'de> for Entries`/`impl:serde::de::Visitor<'de> for Visit`/expecting()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "adapter weights/safetensors/`impl:serde::Deserialize<'de> for Entries`/`impl:serde::de::Visitor<'de> for Visit`/visit_map()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "adapter weights/safetensors/`impl:serde::Deserialize<'de> for Entries`/deserialize()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "adapter weights/safetensors/census()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "adapter weights/safetensors/construct()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "adapter weights/safetensors/digest_stream()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "adapter weights/safetensors/header_of()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "adapter weights/safetensors/malformed()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "adapter weights/safetensors/tensor_entry()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "adapter weights/safetensors/tests/a_constructed_header_is_padded_with_spaces_to_eight_bytes()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "adapter weights/safetensors/tests/a_container_is_censused_as_storage_and_its_roles_stay_unknown()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "adapter weights/safetensors/tests/census_of()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "adapter weights/safetensors/tests/construction_is_mechanical_lossless_and_deterministic()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "adapter weights/safetensors/tests/construction_refuses_a_payload_that_is_not_the_one_censused()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "adapter weights/safetensors/tests/container()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "adapter weights/safetensors/tests/every_untrusted_header_claim_is_checked_before_it_is_believed()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "adapter weights/safetensors/tests/fixture()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "adapter weights/safetensors/tests/payloads_are_read_in_bounded_chunks()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "adapter weights/safetensors/tests/refused()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "core weights/`impl:PreservationClass`/exact_reconstruction_claimable()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "core weights/`impl:TensorDtype`/element_bytes()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "core weights/census_identity()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "core weights/expected_bytes()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "core weights/same_content()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "core weights/tests/a_census_whose_ranges_tile_the_payload_validates()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "core weights/tests/census()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "core weights/tests/every_storage_inconsistency_is_named()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "core weights/tests/exact_reconstruction_is_claimable_only_where_information_survives()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "core weights/tests/tensor()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "core weights/validate()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "runtime weights/census_file()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "runtime weights/construct_file()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "runtime weights/io_error()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "runtime weights/tests/a_container_file_is_censused_constructed_and_verified()."
+      ],
+      "evidence": ""
+    }
+  ],
+  "coverage_delta": [],
+  "unknown_delta": {
+    "increased": [
+      "adapter/src/weights/mod.rs: 0 -> 14",
+      "adapter/src/weights/safetensors.rs: 0 -> 15",
+      "adapter/src/weights/safetensors/tests.rs: 0 -> 15",
+      "core/src/weights/mod.rs: 0 -> 15",
+      "core/src/weights/tests.rs: 0 -> 14",
+      "runtime/src/weights.rs: 0 -> 14"
+    ],
+    "decreased": [],
+    "total_before": 2153,
+    "total_after": 2240
+  },
+  "intent": {
+    "objective": "NA-ARTIFACT-SEMANTICS-WEIGHTS (owner-directed, DEBT-ARTIFACT_SEMANTICS): weights as an artifact class -- a physical SafeTensors census (atlas.weight-census.v1, roles UNKNOWN) and a mechanical, digest-verified lossless construction in core, adapter, runtime and CLI",
+    "changed_paths": [
+      "adapter/Cargo.toml",
+      "adapter/src/lib.rs",
+      "adapter/src/weights/mod.rs",
+      "adapter/src/weights/safetensors.rs",
+      "adapter/src/weights/safetensors/tests.rs",
+      "apps/cli/src/main.rs",
+      "core/src/lib.rs",
+      "core/src/weights/mod.rs",
+      "core/src/weights/tests.rs",
+      "runtime/src/lib.rs",
+      "runtime/src/weights.rs"
+    ],
+    "total_changes": [
+      "+artifacts",
+      "+composed:component_behavior",
+      "+composed:function_behavior",
+      "+composed:function_purpose:DECLARED",
+      "+composed:function_purpose:UNKNOWN",
+      "+composed:purpose:DECLARED",
+      "+composed:purpose:UNKNOWN",
+      "+composed:relation",
+      "+composed:relation:ENCLOSES",
+      "+composed:relation:INVOKES",
+      "+composed:relation:SUPPLIES_DATA",
+      "+diagnostic:IncompleteAnalysis",
+      "+docs",
+      "+entities",
+      "+evidence",
+      "+facts",
+      "+graph_bindings",
+      "+graph_edges",
+      "+graph_nodes",
+      "+normalized_facts",
+      "+obligations",
+      "+obligations:CALL|atlas.resolution.rust-paths|UNKNOWN",
+      "+obligations:CALL|atlas.rust.source-semantic.v1|OBSERVED",
+      "+obligations:CALL|atlas.rust.source-semantic.v1|UNKNOWN",
+      "+obligations:CONCURRENCY|atlas.resolution.rust-paths|UNKNOWN",
+      "+obligations:CONCURRENCY|atlas.rust.source-semantic.v1|UNKNOWN",
+      "+obligations:CONTROL_FLOW|atlas.rust.source-semantic.v1|UNKNOWN",
+      "+obligations:DATA_FLOW|atlas.rust.source-semantic.v1|UNKNOWN",
+      "+obligations:EFFECT|atlas.resolution.rust-paths|UNKNOWN",
+      "+obligations:EFFECT|atlas.rust.source-semantic.v1|UNKNOWN",
+      "+obligations:FUNCTION_IDENTITY|atlas.rust.source-semantic.v1|OBSERVED",
+      "+obligations:FUNCTION_SIGNATURE|atlas.rust.source-semantic.v1|OBSERVED",
+      "+obligations:OWNERSHIP|atlas.rust.source-semantic.v1|UNKNOWN",
+      "+obligations:PERSISTENCE|atlas.resolution.rust-paths|UNKNOWN",
+      "+obligations:PERSISTENCE|atlas.rust.source-semantic.v1|UNKNOWN",
+      "+obligations:RESOURCE|atlas.resolution.rust-paths|UNKNOWN",
+      "+obligations:RESOURCE|atlas.rust.source-semantic.v1|UNSUPPORTED",
+      "+obligations:STATE|atlas.rust.source-semantic.v1|UNKNOWN",
+      "+obligations:SYMBOL|atlas.rust.source-semantic.v1|OBSERVED",
+      "+obligations:TYPE|atlas.resolution.rust-paths|UNKNOWN",
+      "+obligations:TYPE|atlas.rust.source-semantic.v1|OBSERVED",
+      "+records:CALL|atlas.resolution.rust-paths",
+      "+records:CALL|atlas.rust.source-semantic.v1",
+      "+records:CONTROL_FLOW|atlas.rust.source-semantic.v1",
+      "+records:DATA_FLOW|atlas.rust.source-semantic.v1",
+      "+records:EFFECT|atlas.resolution.rust-paths",
+      "+records:EFFECT|atlas.rust.source-semantic.v1",
+      "+records:FUNCTION_IDENTITY|atlas.rust.source-semantic.v1",
+      "+records:FUNCTION_SIGNATURE|atlas.rust.source-semantic.v1",
+      "+records:OWNERSHIP|atlas.rust.source-semantic.v1",
+      "+records:PERSISTENCE|atlas.resolution.rust-paths",
+      "+records:PERSISTENCE|atlas.rust.source-semantic.v1",
+      "+records:RESOURCE|atlas.resolution.rust-paths",
+      "+records:SYMBOL|atlas.rust.source-semantic.v1",
+      "+records:TYPE|atlas.resolution.rust-paths",
+      "+records:TYPE|atlas.rust.source-semantic.v1",
+      "+typed_records",
+      "+unknown_facts",
+      "+unsupported_facts"
+    ],
+    "dependency_changes": [
+      "+adapter -> serde_json@1.0.151 (Registry) [Some(Runtime)]",
+      "-adapter -> serde_json@1.0.151 (Registry) [Some(Dev)]"
+    ],
+    "adl_changes": [],
+    "coverage_changes": [],
+    "explained_unknowns": [
+      "adapter/src/weights/mod.rs: new weights module: a data-only format reader whose tensor-role semantics are UNKNOWN by construction (ADR 0078)",
+      "adapter/src/weights/safetensors.rs: new weights module: a data-only format reader whose tensor-role semantics are UNKNOWN by construction (ADR 0078)",
+      "adapter/src/weights/safetensors/tests.rs: new weights module: a data-only format reader whose tensor-role semantics are UNKNOWN by construction (ADR 0078)",
+      "core/src/weights/mod.rs: new weights module: a data-only format reader whose tensor-role semantics are UNKNOWN by construction (ADR 0078)",
+      "core/src/weights/tests.rs: new weights module: a data-only format reader whose tensor-role semantics are UNKNOWN by construction (ADR 0078)",
+      "runtime/src/weights.rs: new weights module: a data-only format reader whose tensor-role semantics are UNKNOWN by construction (ADR 0078)"
+    ],
+    "accepted_unexpected": [],
+    "entity_changes": [
+      "CHANGED `apps/cli` run().",
+      "CREATED adapter weights/safetensors/`impl:From<io::Error> for WeightError`/from().",
+      "CREATED adapter weights/safetensors/`impl:fmt::Display for WeightError`/fmt().",
+      "CREATED adapter weights/safetensors/`impl:serde::Deserialize<'de> for Entries`/`impl:serde::de::Visitor<'de> for Visit`/expecting().",
+      "CREATED adapter weights/safetensors/`impl:serde::Deserialize<'de> for Entries`/`impl:serde::de::Visitor<'de> for Visit`/visit_map().",
+      "CREATED adapter weights/safetensors/`impl:serde::Deserialize<'de> for Entries`/deserialize().",
+      "CREATED adapter weights/safetensors/census().",
+      "CREATED adapter weights/safetensors/construct().",
+      "CREATED adapter weights/safetensors/digest_stream().",
+      "CREATED adapter weights/safetensors/header_of().",
+      "CREATED adapter weights/safetensors/malformed().",
+      "CREATED adapter weights/safetensors/tensor_entry().",
+      "CREATED adapter weights/safetensors/tests/a_constructed_header_is_padded_with_spaces_to_eight_bytes().",
+      "CREATED adapter weights/safetensors/tests/a_container_is_censused_as_storage_and_its_roles_stay_unknown().",
+      "CREATED adapter weights/safetensors/tests/census_of().",
+      "CREATED adapter weights/safetensors/tests/construction_is_mechanical_lossless_and_deterministic().",
+      "CREATED adapter weights/safetensors/tests/construction_refuses_a_payload_that_is_not_the_one_censused().",
+      "CREATED adapter weights/safetensors/tests/container().",
+      "CREATED adapter weights/safetensors/tests/every_untrusted_header_claim_is_checked_before_it_is_believed().",
+      "CREATED adapter weights/safetensors/tests/fixture().",
+      "CREATED adapter weights/safetensors/tests/payloads_are_read_in_bounded_chunks().",
+      "CREATED adapter weights/safetensors/tests/refused().",
+      "CREATED core weights/`impl:PreservationClass`/exact_reconstruction_claimable().",
+      "CREATED core weights/`impl:TensorDtype`/element_bytes().",
+      "CREATED core weights/census_identity().",
+      "CREATED core weights/expected_bytes().",
+      "CREATED core weights/same_content().",
+      "CREATED core weights/tests/a_census_whose_ranges_tile_the_payload_validates().",
+      "CREATED core weights/tests/census().",
+      "CREATED core weights/tests/every_storage_inconsistency_is_named().",
+      "CREATED core weights/tests/exact_reconstruction_is_claimable_only_where_information_survives().",
+      "CREATED core weights/tests/tensor().",
+      "CREATED core weights/validate().",
+      "CREATED runtime weights/census_file().",
+      "CREATED runtime weights/construct_file().",
+      "CREATED runtime weights/io_error().",
+      "CREATED runtime weights/tests/a_container_file_is_censused_constructed_and_verified()."
+    ]
+  },
+  "intended_changes": [
+    "path adapter/Cargo.toml",
+    "path adapter/src/lib.rs",
+    "path adapter/src/weights/mod.rs",
+    "path adapter/src/weights/safetensors.rs",
+    "path adapter/src/weights/safetensors/tests.rs",
+    "path apps/cli/src/main.rs",
+    "path core/src/lib.rs",
+    "path core/src/weights/mod.rs",
+    "path core/src/weights/tests.rs",
+    "path runtime/src/lib.rs",
+    "path runtime/src/weights.rs",
+    "total +artifacts",
+    "total +composed:component_behavior",
+    "total +composed:function_behavior",
+    "total +composed:function_purpose:DECLARED",
+    "total +composed:function_purpose:UNKNOWN",
+    "total +composed:purpose:DECLARED",
+    "total +composed:purpose:UNKNOWN",
+    "total +composed:relation",
+    "total +composed:relation:ENCLOSES",
+    "total +composed:relation:INVOKES",
+    "total +composed:relation:SUPPLIES_DATA",
+    "total +diagnostic:IncompleteAnalysis",
+    "total +docs",
+    "total +entities",
+    "total +evidence",
+    "total +facts",
+    "total +graph_bindings",
+    "total +graph_edges",
+    "total +graph_nodes",
+    "total +normalized_facts",
+    "total +obligations",
+    "total +obligations:CALL|atlas.resolution.rust-paths|UNKNOWN",
+    "total +obligations:CALL|atlas.rust.source-semantic.v1|OBSERVED",
+    "total +obligations:CALL|atlas.rust.source-semantic.v1|UNKNOWN",
+    "total +obligations:CONCURRENCY|atlas.resolution.rust-paths|UNKNOWN",
+    "total +obligations:CONCURRENCY|atlas.rust.source-semantic.v1|UNKNOWN",
+    "total +obligations:CONTROL_FLOW|atlas.rust.source-semantic.v1|UNKNOWN",
+    "total +obligations:DATA_FLOW|atlas.rust.source-semantic.v1|UNKNOWN",
+    "total +obligations:EFFECT|atlas.resolution.rust-paths|UNKNOWN",
+    "total +obligations:EFFECT|atlas.rust.source-semantic.v1|UNKNOWN",
+    "total +obligations:FUNCTION_IDENTITY|atlas.rust.source-semantic.v1|OBSERVED",
+    "total +obligations:FUNCTION_SIGNATURE|atlas.rust.source-semantic.v1|OBSERVED",
+    "total +obligations:OWNERSHIP|atlas.rust.source-semantic.v1|UNKNOWN",
+    "total +obligations:PERSISTENCE|atlas.resolution.rust-paths|UNKNOWN",
+    "total +obligations:PERSISTENCE|atlas.rust.source-semantic.v1|UNKNOWN",
+    "total +obligations:RESOURCE|atlas.resolution.rust-paths|UNKNOWN",
+    "total +obligations:RESOURCE|atlas.rust.source-semantic.v1|UNSUPPORTED",
+    "total +obligations:STATE|atlas.rust.source-semantic.v1|UNKNOWN",
+    "total +obligations:SYMBOL|atlas.rust.source-semantic.v1|OBSERVED",
+    "total +obligations:TYPE|atlas.resolution.rust-paths|UNKNOWN",
+    "total +obligations:TYPE|atlas.rust.source-semantic.v1|OBSERVED",
+    "total +records:CALL|atlas.resolution.rust-paths",
+    "total +records:CALL|atlas.rust.source-semantic.v1",
+    "total +records:CONTROL_FLOW|atlas.rust.source-semantic.v1",
+    "total +records:DATA_FLOW|atlas.rust.source-semantic.v1",
+    "total +records:EFFECT|atlas.resolution.rust-paths",
+    "total +records:EFFECT|atlas.rust.source-semantic.v1",
+    "total +records:FUNCTION_IDENTITY|atlas.rust.source-semantic.v1",
+    "total +records:FUNCTION_SIGNATURE|atlas.rust.source-semantic.v1",
+    "total +records:OWNERSHIP|atlas.rust.source-semantic.v1",
+    "total +records:PERSISTENCE|atlas.resolution.rust-paths",
+    "total +records:PERSISTENCE|atlas.rust.source-semantic.v1",
+    "total +records:RESOURCE|atlas.resolution.rust-paths",
+    "total +records:SYMBOL|atlas.rust.source-semantic.v1",
+    "total +records:TYPE|atlas.resolution.rust-paths",
+    "total +records:TYPE|atlas.rust.source-semantic.v1",
+    "total +typed_records",
+    "total +unknown_facts",
+    "total +unsupported_facts",
+    "dependency +adapter -> serde_json@1.0.151 (Registry) [Some(Runtime)]",
+    "dependency -adapter -> serde_json@1.0.151 (Registry) [Some(Dev)]",
+    "entity CHANGED `apps/cli` run().",
+    "entity CREATED adapter weights/safetensors/`impl:From<io::Error> for WeightError`/from().",
+    "entity CREATED adapter weights/safetensors/`impl:fmt::Display for WeightError`/fmt().",
+    "entity CREATED adapter weights/safetensors/`impl:serde::Deserialize<'de> for Entries`/`impl:serde::de::Visitor<'de> for Visit`/expecting().",
+    "entity CREATED adapter weights/safetensors/`impl:serde::Deserialize<'de> for Entries`/`impl:serde::de::Visitor<'de> for Visit`/visit_map().",
+    "entity CREATED adapter weights/safetensors/`impl:serde::Deserialize<'de> for Entries`/deserialize().",
+    "entity CREATED adapter weights/safetensors/census().",
+    "entity CREATED adapter weights/safetensors/construct().",
+    "entity CREATED adapter weights/safetensors/digest_stream().",
+    "entity CREATED adapter weights/safetensors/header_of().",
+    "entity CREATED adapter weights/safetensors/malformed().",
+    "entity CREATED adapter weights/safetensors/tensor_entry().",
+    "entity CREATED adapter weights/safetensors/tests/a_constructed_header_is_padded_with_spaces_to_eight_bytes().",
+    "entity CREATED adapter weights/safetensors/tests/a_container_is_censused_as_storage_and_its_roles_stay_unknown().",
+    "entity CREATED adapter weights/safetensors/tests/census_of().",
+    "entity CREATED adapter weights/safetensors/tests/construction_is_mechanical_lossless_and_deterministic().",
+    "entity CREATED adapter weights/safetensors/tests/construction_refuses_a_payload_that_is_not_the_one_censused().",
+    "entity CREATED adapter weights/safetensors/tests/container().",
+    "entity CREATED adapter weights/safetensors/tests/every_untrusted_header_claim_is_checked_before_it_is_believed().",
+    "entity CREATED adapter weights/safetensors/tests/fixture().",
+    "entity CREATED adapter weights/safetensors/tests/payloads_are_read_in_bounded_chunks().",
+    "entity CREATED adapter weights/safetensors/tests/refused().",
+    "entity CREATED core weights/`impl:PreservationClass`/exact_reconstruction_claimable().",
+    "entity CREATED core weights/`impl:TensorDtype`/element_bytes().",
+    "entity CREATED core weights/census_identity().",
+    "entity CREATED core weights/expected_bytes().",
+    "entity CREATED core weights/same_content().",
+    "entity CREATED core weights/tests/a_census_whose_ranges_tile_the_payload_validates().",
+    "entity CREATED core weights/tests/census().",
+    "entity CREATED core weights/tests/every_storage_inconsistency_is_named().",
+    "entity CREATED core weights/tests/exact_reconstruction_is_claimable_only_where_information_survives().",
+    "entity CREATED core weights/tests/tensor().",
+    "entity CREATED core weights/validate().",
+    "entity CREATED runtime weights/census_file().",
+    "entity CREATED runtime weights/construct_file().",
+    "entity CREATED runtime weights/io_error().",
+    "entity CREATED runtime weights/tests/a_container_file_is_censused_constructed_and_verified()."
+  ],
+  "intended_but_unobserved": [],
+  "unexpected_changes": [],
+  "regressions": [],
+  "verdict": "PROVEN"
+}

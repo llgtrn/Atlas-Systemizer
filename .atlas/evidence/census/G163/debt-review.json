@@ -1,0 +1,44 @@
+{
+  "schema": "atlas.debt-review.v1",
+  "generation": "G163",
+  "trigger": "review cadence: DEBT-MULTI_ENGINE, DEBT-SANDBOXED_EXECUTION, DEBT-ADL_BEYOND_DEPENDENCIES and DEBT-QUANTITY_UNITS (last reviewed G150) and DEBT-DESIGN_GENERATION (last reviewed G142) fell due at G163",
+  "method": "re-read against the code at 8dadebb5 plus the G163 change: the certificate's multi-engine blocker (core::certificate), runtime::sandbox and runtime::verification, core::language::adl::census, the physical and product reports, core::design candidates (G150)",
+  "reviews": [
+    {
+      "debt": "DEBT-MULTI_ENGINE",
+      "verdict": "CORRECTED",
+      "finding": "its blind spots omitted RESOURCE: the G157 profile has one engine (resolved std paths) and the certificate's MULTI_ENGINE_RECONCILIATION_ABSENT blocker lists it beside CONTROL_FLOW, DATA_FLOW, FUNCTION_IDENTITY, FUNCTION_SIGNATURE, OWNERSHIP, STATE and SYMBOL; CONCURRENCY and PERSISTENCE keep two engines; NA-SECOND-ENGINE unchanged",
+      "correction": {
+        "known_blind_spots": "corrected in the ledger (see finding)"
+      }
+    },
+    {
+      "debt": "DEBT-SANDBOXED_EXECUTION",
+      "verdict": "CONFIRMED",
+      "finding": "unchanged since G126: the restricted-subprocess class confines declared inputs and outputs and a network namespace, not absolute-path or .. reads (no Landlock or mount namespace without unsafe code), and records no toolchain identity per run; verification command evidence still runs with ambient authority and says so, which the G161 seal gate reads; NA-SANDBOX-FS-CONFINEMENT",
+      "correction": {}
+    },
+    {
+      "debt": "DEBT-ADL_BEYOND_DEPENDENCIES",
+      "verdict": "CORRECTED",
+      "finding": "unchanged since G137 (members, dependencies and effect envelopes lowered and reconciled), but its blind spots omitted the dimensions added since: resources (G157) and concurrency are not lowered into envelopes either; NA-ADL-STATE-AND-PACKAGES unchanged",
+      "correction": {
+        "known_blind_spots": "corrected in the ledger (see finding)"
+      }
+    },
+    {
+      "debt": "DEBT-QUANTITY_UNITS",
+      "verdict": "CONFIRMED",
+      "finding": "physical and product reports still hold derived quantities outside the census, graph, certificate and .atlas; the G163 weight census carries byte counts and shapes, not physical quantities, so it neither closes nor widens this debt; NA-QUANTITY-SIDE-REPORTS heads the native queue (G165)",
+      "correction": {}
+    },
+    {
+      "debt": "DEBT-DESIGN_GENERATION",
+      "verdict": "CORRECTED",
+      "finding": "its blind spot said there are no candidate designs over .atlas, stale since G150: candidate designs over a verified container are compared by measured criteria; what is missing is generation -- every candidate is authored, none derived from the world model; NA-DESIGN-CANDIDATE-GENERATION unchanged",
+      "correction": {
+        "known_blind_spots": "corrected in the ledger (see finding)"
+      }
+    }
+  ]
+}

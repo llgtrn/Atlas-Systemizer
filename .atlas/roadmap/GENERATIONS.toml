@@ -13,7 +13,7 @@
 #       -> generation evidence -> G_n+1
 
 schema = "atlas.self-build.generation-ledger.v1"
-current_generation = "G162"
+current_generation = "G163"
 
 [[generation]]
 id = "G35"
@@ -3720,3 +3720,40 @@ after = 5028
 key = "diagnostic:IncompleteAnalysis"
 before = 1773
 after = 1780
+
+[[generation]]
+id = "G163"
+kind = "NATIVE_ATTACK"
+base_commit = "8dadebb5d133597f155d61a009d67be512a3630b"
+priority = "P6"
+serves = "DEBT-ARTIFACT_SEMANTICS: the owner-directed weight-artifact upgrade, between replays R7 and R8 (it displaced NA-QUANTITY-SIDE-REPORTS by one native slot)"
+objective = "NA-ARTIFACT-SEMANTICS-WEIGHTS: weights as an artifact class -- a physical census (atlas.weight-census.v1: dtype, shape, payload range and BLAKE3 digest per tensor, ranges tiling the payload) apart from semantic roles left UNKNOWN; SafeTensors read streamed and data-only; construction mechanical from the record and digest-verified payload ranges, content preservation checked by re-census; LOSSLESS, REVERSIBLE_WITH_RETAINED and LOSSY typed"
+writer = "coordinator (sole writer)"
+evidence = ".atlas/decisions/0078-weight-artifacts-physical-census-and-mechanical-construction.md"
+self_recensus = ".atlas/evidence/census/G163/recensus.json"
+
+[generation.verification]
+pre_census = "G162 post digest"
+atlas_first = "a weight file was an opaque binary at L0: its class from the extension and a digest, nothing about its tensors, and no path to construct one; .atlas v1 is THIN (payloads outside the container) and .atlasx carries no payloads, so the census has to reference payloads by digest and range"
+change = "core: weights (WeightFormat, TensorDtype, PreservationClass, PayloadRange, PhysicalTensor, WeightCensus, validate, expected_bytes, census_identity, same_content); adapter: weights::safetensors (census with a bounded header, duplicate keys, unknown fields and unknown dtypes refused, structure checked before payload, 64 KiB streaming digests; header_of; construct from the record and digest-verified ranges); runtime: weights (census_file, construct_file through a partial file renamed only after the output's census matches); CLI weights census and weights construct"
+oracle = "the reference implementation (safetensors 0.4.5, a black-box writer and reader in a scratch environment, never a dependency) wrote 8 tensors in 7 dtypes with a scalar, an empty tensor and metadata; Atlas's constructed output read back equal in every tensor and the metadata, same length, header keys in a different order; Atlas's canonical form is a fixed point; a 1 GiB artifact censused at 14.6 MB and constructed at 15.1 MB peak resident, read back equal (evidence/weights/G163-safetensors-oracle.json)"
+falsification = "12 mutants killed (the header bound, duplicate keys, unknown fields, reversed ranges, the digest check, construction without validation, the header padding, overlapping ranges, payload coverage, duplicate names, a wrapping element count, exact reconstruction claimed without the retained residual)"
+boundary = "roles stay UNKNOWN (names are not roles); SafeTensors only; not yet a record family of the self census or a support level; no transform beyond a lossless re-encoding; no donor materialized, nothing absorbed, nothing extinct"
+debts = "DEBT-ARTIFACT_SEMANTICS M0_ABSENT -> M2_PARTIAL, last advance G163; capability epoch E12; replay triggers re-checked at E12 (none concerns weights); weight donor families (llama.cpp, safetensors, transformers, pytorch, onnx, mlx) enter FULL_OSS_REPLAY as authorized NEVER_REPLAYED; NA-WEIGHT-CENSUS-RECORDS, NA-WEIGHT-ROLES, NA-WEIGHT-TRANSFORMS, NA-WEIGHT-FORMATS queued; next replay google/crubit G164; native head NA-QUANTITY-SIDE-REPORTS planned G165"
+review = "5 debts reviewed at their cadence: DEBT-SANDBOXED_EXECUTION and DEBT-QUANTITY_UNITS confirmed; DEBT-MULTI_ENGINE corrected (RESOURCE single-engine since G157), DEBT-ADL_BEYOND_DEPENDENCIES corrected (resources and concurrency not lowered), DEBT-DESIGN_GENERATION corrected (candidates exist since G150, authored not generated) (evidence/census/G163/debt-review.json)"
+proof = "PROVEN (post 4b433e84...): no unexplained UNKNOWN (the new weights module explained)"
+
+[[generation.metric]]
+key = "records:FUNCTION_IDENTITY|atlas.rust.source-semantic.v1"
+before = 6064
+after = 6119
+
+[[generation.metric]]
+key = "composed:relation:INVOKES"
+before = 5028
+after = 5080
+
+[[generation.metric]]
+key = "artifacts"
+before = 155
+after = 161
