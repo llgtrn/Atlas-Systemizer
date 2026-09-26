@@ -1,0 +1,24 @@
+{
+  "schema": "atlas.debt-review.v1",
+  "generation": "G164",
+  "trigger": "review cadence: DEBT-INTEGRITY_ENVELOPE (last reviewed G151) and DEBT-SEMANTIC-COMPOSITION (last reviewed G122) fell due at G164",
+  "method": "re-read against the code at 7b472956 plus the G164 change: core::integrity (the lowered invariant classes), core::seal::gate (the integrity verdict it requires), core::composition (resources composed per function since G157), and replay R8's lens findings",
+  "reviews": [
+    {
+      "debt": "DEBT-INTEGRITY_ENVELOPE",
+      "verdict": "CORRECTED",
+      "finding": "the envelope still lowers DEPENDENCY_DIRECTION and AUTHORITY_BOUNDARY only and the report recomputes in full; its next attack still named NA-SEAL-GATE as the consumer to come, but since G161 the seal gate requires the integrity verdict for the container's census digest and clean revision (every clean-HEAD evidence run since reads ELIGIBLE); NA-INTEGRITY-CLASSES is what remains",
+      "correction": {
+        "next_attack": "NA-INTEGRITY-CLASSES (the seal gate consumes the report since G161)"
+      }
+    },
+    {
+      "debt": "DEBT-SEMANTIC-COMPOSITION",
+      "verdict": "CORRECTED",
+      "finding": "type purpose, capability realization (GAP-CAPABILITY-REALIZATION), causality and test identity are still missing, but its blind spots still listed resources: RESOURCE records compose into each function's resources since G157, and GAP-RESOURCE names the residual; replay R8 added that an unreached file's unresolved calls are unexplained in the lenses (recorded under DEBT-CALL); NA-CAPABILITY-REALIZATION unchanged",
+      "correction": {
+        "known_blind_spots": "type purpose, capability realization, causality and test identity (resources compose since G157)"
+      }
+    }
+  ]
+}

@@ -82,7 +82,7 @@ selected_attack = "NA-MACRO-ARGUMENTS"
 status = "BLOCKED"
 blocking_debts = ["DEBT-SYMBOL", "DEBT-PROVENANCE", "DEBT-MULTI_ENGINE", "DEBT-CONSTRAINT_REASONING", "DEBT-ATLASX", "DEBT-COMPILER_LOWERING", "DEBT-SANDBOXED_EXECUTION", "DEBT-ARTIFACT_IDENTITY", "DEBT-TRANSFORMATION", "DEBT-QUANTITY_UNITS", "DEBT-UNCERTAINTY", "DEBT-DISTRIBUTED_SEMANTICS", "DEBT-REAL_WORLD_OBSERVATION", "DEBT-SIMULATION", "DEBT-PHYSICAL_ONTOLOGY", "DEBT-CONSTRUCTION_TRANSACTION"]
 reason = "hard stop until the audit is COMPLETE, then while any OPEN essential debt is at BLOCK_NEW_DONOR_PROGRESS or past its skip budget"
-materialized_checkouts = ["borg", "cdc-file-transfer", "crubit", "cytoscape-js", "elkjs", "fastcdc-rs", "git", "lz4", "opendesign", "py2many", "restic", "security", "xz"]
+materialized_checkouts = ["borg", "cdc-file-transfer", "cytoscape-js", "elkjs", "fastcdc-rs", "git", "lz4", "opendesign", "py2many", "restic", "security", "xz"]
 
 # NEW_DONOR_PROGRESSION (above) and HISTORICAL_DONOR_REVALIDATION are distinct (G121). Revalidation
 # re-censuses a historical First-50 donor with current Atlas only when a capability-based trigger in
@@ -95,11 +95,11 @@ ledger = ".atlas/roadmap/RECURSIVE-DONOR-REVALIDATION.toml"
 [frontier_expansion]
 status = "BLOCKED"
 pinned_repositories = 153
-pinned_lifecycle_admitted = 10
+pinned_lifecycle_admitted = 9
 pinned_lifecycle_admitted_remote = 1
 pinned_lifecycle_candidate = 84
 pinned_lifecycle_candidate_overlapping = 1
 pinned_lifecycle_external_oracle = 1
 pinned_lifecycle_external_provider_artifact = 8
-pinned_lifecycle_extinct = 46
+pinned_lifecycle_extinct = 47
 pinned_lifecycle_rejected_unlicensed = 2

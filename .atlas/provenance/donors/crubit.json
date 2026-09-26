@@ -10,7 +10,8 @@
   "license_files": [
     "LICENSE"
   ],
-  "ingestion_status": "CLONED",
+  "ingestion_status": "EXTINCT",
+  "storage_state": "SOURCE_DELETED",
   "census_status": "SKELETON",
   "runtime_dependency_status": "REFERENCE_ONLY"
 }

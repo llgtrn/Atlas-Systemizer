@@ -1,0 +1,197 @@
+{
+  "schema": "atlas.self-recensus-report.v1",
+  "generation": "G164",
+  "base_revision": "8dadebb5d133597f155d61a009d67be512a3630b",
+  "candidate_revision": "7b472956e4b665debf1fdc0ae19d2a2475ef63e1",
+  "candidate_dirty": true,
+  "before_census_digest": "blake3-256:4b433e84a6b41e8fc930c352ae8eaec08415c270e59decd737a3bfd894329d70",
+  "after_census_digest": "blake3-256:8897f64a221896fd77cd494bc0ce0a3dc1bcbc8ebfa74882b8597674a5842108",
+  "replay_digest": "blake3-256:8897f64a221896fd77cd494bc0ce0a3dc1bcbc8ebfa74882b8597674a5842108",
+  "inventory_delta": {
+    "created": [],
+    "modified": [
+      "adapter/src/dependency/cargo.rs",
+      "runtime/src/census/resolution.rs",
+      "runtime/src/census/resolution/tests.rs",
+      "runtime/src/donor_storage.rs"
+    ],
+    "deleted": []
+  },
+  "semantic_delta": {
+    "changed": [
+      "adapter/src/dependency/cargo.rs",
+      "runtime/src/census/resolution.rs",
+      "runtime/src/census/resolution/tests.rs",
+      "runtime/src/donor_storage.rs"
+    ],
+    "counts": {
+      "fact:FunctionIdentity|OBSERVED": 9,
+      "fact:FunctionSignature|OBSERVED": 2,
+      "fact:Symbol|OBSERVED": 9,
+      "fact:Type|DERIVED": 1,
+      "fact:Type|OBSERVED": 1,
+      "record:CALL|DERIVED": 4,
+      "record:CALL|OBSERVED": 41,
+      "record:CONTROL_FLOW|INFERRED": 5,
+      "record:CONTROL_FLOW|OBSERVED": 15,
+      "record:DATA_FLOW|OBSERVED": 58,
+      "record:EFFECT|INFERRED": 5,
+      "record:FUNCTION_IDENTITY|OBSERVED": 9,
+      "record:FUNCTION_SIGNATURE|OBSERVED": 2,
+      "record:OWNERSHIP|OBSERVED": 7,
+      "record:SYMBOL|OBSERVED": 9,
+      "record:TYPE|DERIVED": 1,
+      "record:TYPE|OBSERVED": 1
+    }
+  },
+  "dependency_delta": {
+    "added": [],
+    "removed": []
+  },
+  "dependency_state": [
+    "Closed",
+    "Closed"
+  ],
+  "graph_delta": {
+    "graph_edges": 197,
+    "graph_nodes": 163
+  },
+  "obligation_delta": {},
+  "adl_delta": {
+    "added": [],
+    "removed": []
+  },
+  "entity_delta": [
+    {
+      "kind": "CHANGED",
+      "before": [
+        "runtime census/resolution/crate_targets()."
+      ],
+      "after": [
+        "runtime census/resolution/crate_targets()."
+      ],
+      "evidence": "body"
+    },
+    {
+      "kind": "CHANGED",
+      "before": [
+        "runtime donor_storage/tests/repository_donor_storage_has_no_unrecorded_violation()."
+      ],
+      "after": [
+        "runtime donor_storage/tests/repository_donor_storage_has_no_unrecorded_violation()."
+      ],
+      "evidence": "body"
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "runtime census/resolution/target_path()."
+      ],
+      "evidence": ""
+    },
+    {
+      "kind": "CREATED",
+      "before": [],
+      "after": [
+        "runtime census/resolution/tests/crate_targets_normalize_climbing_target_paths_and_refuse_escapes()."
+      ],
+      "evidence": ""
+    }
+  ],
+  "coverage_delta": [],
+  "unknown_delta": {
+    "increased": [],
+    "decreased": [],
+    "total_before": 2240,
+    "total_after": 2240
+  },
+  "intent": {
+    "objective": "FULL_OSS_REPLAY R8 google/crubit: a crate root is its manifest target path resolved against the manifest directory with . and .. collapsed (ADR 0079); the pinned clone and the admitted legacy checkout of crubit extinguished",
+    "changed_paths": [
+      "adapter/src/dependency/cargo.rs",
+      "runtime/src/census/resolution.rs",
+      "runtime/src/census/resolution/tests.rs",
+      "runtime/src/donor_storage.rs"
+    ],
+    "total_changes": [
+      "+composed:function_behavior",
+      "+composed:function_purpose:DECLARED",
+      "+composed:function_purpose:UNKNOWN",
+      "+composed:relation",
+      "+composed:relation:ENCLOSES",
+      "+composed:relation:INVOKES",
+      "+composed:relation:SUPPLIES_DATA",
+      "+docs",
+      "+entities",
+      "+evidence",
+      "+facts",
+      "+graph_edges",
+      "+graph_nodes",
+      "+normalized_facts",
+      "+records:CALL|atlas.resolution.rust-paths",
+      "+records:CALL|atlas.rust.source-semantic.v1",
+      "+records:CONTROL_FLOW|atlas.rust.source-semantic.v1",
+      "+records:DATA_FLOW|atlas.rust.source-semantic.v1",
+      "+records:EFFECT|atlas.rust.source-semantic.v1",
+      "+records:FUNCTION_IDENTITY|atlas.rust.source-semantic.v1",
+      "+records:FUNCTION_SIGNATURE|atlas.rust.source-semantic.v1",
+      "+records:OWNERSHIP|atlas.rust.source-semantic.v1",
+      "+records:SYMBOL|atlas.rust.source-semantic.v1",
+      "+records:TYPE|atlas.resolution.rust-paths",
+      "+records:TYPE|atlas.rust.source-semantic.v1",
+      "+typed_records"
+    ],
+    "dependency_changes": [],
+    "adl_changes": [],
+    "coverage_changes": [],
+    "explained_unknowns": [],
+    "accepted_unexpected": [],
+    "entity_changes": [
+      "CHANGED runtime census/resolution/crate_targets().",
+      "CHANGED runtime donor_storage/tests/repository_donor_storage_has_no_unrecorded_violation().",
+      "CREATED runtime census/resolution/target_path().",
+      "CREATED runtime census/resolution/tests/crate_targets_normalize_climbing_target_paths_and_refuse_escapes()."
+    ]
+  },
+  "intended_changes": [
+    "path adapter/src/dependency/cargo.rs",
+    "path runtime/src/census/resolution.rs",
+    "path runtime/src/census/resolution/tests.rs",
+    "path runtime/src/donor_storage.rs",
+    "total +composed:function_behavior",
+    "total +composed:function_purpose:DECLARED",
+    "total +composed:function_purpose:UNKNOWN",
+    "total +composed:relation",
+    "total +composed:relation:ENCLOSES",
+    "total +composed:relation:INVOKES",
+    "total +composed:relation:SUPPLIES_DATA",
+    "total +docs",
+    "total +entities",
+    "total +evidence",
+    "total +facts",
+    "total +graph_edges",
+    "total +graph_nodes",
+    "total +normalized_facts",
+    "total +records:CALL|atlas.resolution.rust-paths",
+    "total +records:CALL|atlas.rust.source-semantic.v1",
+    "total +records:CONTROL_FLOW|atlas.rust.source-semantic.v1",
+    "total +records:DATA_FLOW|atlas.rust.source-semantic.v1",
+    "total +records:EFFECT|atlas.rust.source-semantic.v1",
+    "total +records:FUNCTION_IDENTITY|atlas.rust.source-semantic.v1",
+    "total +records:FUNCTION_SIGNATURE|atlas.rust.source-semantic.v1",
+    "total +records:OWNERSHIP|atlas.rust.source-semantic.v1",
+    "total +records:SYMBOL|atlas.rust.source-semantic.v1",
+    "total +records:TYPE|atlas.resolution.rust-paths",
+    "total +records:TYPE|atlas.rust.source-semantic.v1",
+    "total +typed_records",
+    "entity CHANGED runtime census/resolution/crate_targets().",
+    "entity CHANGED runtime donor_storage/tests/repository_donor_storage_has_no_unrecorded_violation().",
+    "entity CREATED runtime census/resolution/target_path().",
+    "entity CREATED runtime census/resolution/tests/crate_targets_normalize_climbing_target_paths_and_refuse_escapes()."
+  ],
+  "intended_but_unobserved": [],
+  "unexpected_changes": [],
+  "regressions": [],
+  "verdict": "PROVEN"
+}

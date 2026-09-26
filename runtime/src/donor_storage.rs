@@ -478,6 +478,7 @@ mod tests {
                 "clef",
                 "composer",
                 "containers-image",
+                "crubit",
                 "datafrog",
                 "differential-dataflow",
                 "duumbi",

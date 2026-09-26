@@ -1,0 +1,45 @@
+{
+  "objective": "FULL_OSS_REPLAY R8 google/crubit: a crate root is its manifest target path resolved against the manifest directory with . and .. collapsed (ADR 0079); the pinned clone and the admitted legacy checkout of crubit extinguished",
+  "changed_paths": [
+    "adapter/src/dependency/cargo.rs",
+    "runtime/src/census/resolution.rs",
+    "runtime/src/census/resolution/tests.rs",
+    "runtime/src/donor_storage.rs"
+  ],
+  "total_changes": [
+    "+composed:function_behavior",
+    "+composed:function_purpose:DECLARED",
+    "+composed:function_purpose:UNKNOWN",
+    "+composed:relation",
+    "+composed:relation:ENCLOSES",
+    "+composed:relation:INVOKES",
+    "+composed:relation:SUPPLIES_DATA",
+    "+docs",
+    "+entities",
+    "+evidence",
+    "+facts",
+    "+graph_edges",
+    "+graph_nodes",
+    "+normalized_facts",
+    "+records:CALL|atlas.resolution.rust-paths",
+    "+records:CALL|atlas.rust.source-semantic.v1",
+    "+records:CONTROL_FLOW|atlas.rust.source-semantic.v1",
+    "+records:DATA_FLOW|atlas.rust.source-semantic.v1",
+    "+records:EFFECT|atlas.rust.source-semantic.v1",
+    "+records:FUNCTION_IDENTITY|atlas.rust.source-semantic.v1",
+    "+records:FUNCTION_SIGNATURE|atlas.rust.source-semantic.v1",
+    "+records:OWNERSHIP|atlas.rust.source-semantic.v1",
+    "+records:SYMBOL|atlas.rust.source-semantic.v1",
+    "+records:TYPE|atlas.resolution.rust-paths",
+    "+records:TYPE|atlas.rust.source-semantic.v1",
+    "+typed_records"
+  ],
+  "entity_changes": [
+    "CHANGED runtime census/resolution/crate_targets().",
+    "CHANGED runtime donor_storage/tests/repository_donor_storage_has_no_unrecorded_violation().",
+    "CREATED runtime census/resolution/target_path().",
+    "CREATED runtime census/resolution/tests/crate_targets_normalize_climbing_target_paths_and_refuse_escapes()."
+  ],
+  "adl_changes": [],
+  "dependency_changes": []
+}

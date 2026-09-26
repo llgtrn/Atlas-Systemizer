@@ -1,0 +1,163 @@
+{
+  "schema": "atlas.evidence.full-oss-replay.v1",
+  "replay": "R8",
+  "generation": "G164",
+  "lane": "FULL_OSS_REPLAY",
+  "donor": {
+    "key": "google/crubit",
+    "remote": "https://github.com/google/crubit.git",
+    "pin": "34c96fb368e1a734c06425172f810ca1371eb705",
+    "pin_choice": "the commit of the admitted legacy checkout (provenance/donors/crubit.json); a blobless depth-1 fetch of the pin equals the tracked checkout (.atlas/temporary/donors/crubit, 2,786 tracked files) in every file except two MODULE.bazel.lock files the checkout never tracked",
+    "license": "Apache-2.0 WITH LLVM-exception, verified in LICENSE at the pin",
+    "code_reuse": "NONE (study only: nothing copied; the fixture is Atlas's own minimal reproduction)",
+    "selection": "queued at G162 as the next replay: Rust/C++ interop facing the strongest Atlas (E12) -- FFI acquire/release pairs (a named RESOURCE residual since replay R3), C++ without a frontend, genuine dependency cycles through member dev-dependencies, and a materialized legacy checkout",
+    "dependency_class": "MECHANISM_INTERNAL (a Cargo workspace of 7 declared members whose path dependencies reach 115 package manifests under cargo/; Bazel is the primary build; no dependency source materialized)",
+    "materialization": "blobless depth-1 fetch of the pin (28 MB checkout: 890 rs, 507 cc, 637 h, 125 toml), moved to .atlas/.cache/donors/crubit; the whole workspace censused -- no slice needed"
+  },
+  "epochs": {
+    "before": "E12",
+    "after": "E13 (G164: a crate root is its manifest's target path, normalized, wherever it lies)"
+  },
+  "support_levels": {
+    "note": "Rust L6 at both epochs on the pin (the ladder measures presence); what E13 changes is below it: which files a crate root reaches"
+  },
+  "atlas_n_mission": {
+    "commands": [
+      "agent model --root <pin> (the whole workspace, 2,514 MB peak, 22 s)",
+      "agent explain --target cc_bindings_from_rs/cc_bindings_from_rs.rs",
+      "agent unknowns --target cc_bindings_from_rs/cc_bindings_from_rs.rs"
+    ],
+    "atlas_knew": {
+      "functions": 11697,
+      "call_records": 33946,
+      "invokes": 154,
+      "unresolved_call_sites": 33587,
+      "resources": 0,
+      "foreign_functions": 947,
+      "foreign_functions_with_callers": 1,
+      "unrecognized_source_files": 1628,
+      "subsystems": 0
+    },
+    "challenge": "what does cc_bindings_from_rs's main reach to generate C++ bindings from a Rust crate -- which crubit library functions does it call?",
+    "answer": "E12: nothing -- main has 6 unresolved call sites, the closure passed to and_then 1 (run_with_cmdline_args), depends_on empty, and neither explain nor unknowns says why; the census obligation alone records that no Cargo target's module tree reaches the file"
+  },
+  "differential": {
+    "oracle": "the source at the pin (ORACLE_READ, recorded) and Cargo's documented target-path rule (a target path is relative to its manifest's directory); crubit is a bindings generator, not a code-intelligence tool, so the comparison is Atlas against ground truth",
+    "findings": [
+      {
+        "question": "what does main in cc_bindings_from_rs/cc_bindings_from_rs.rs call?",
+        "ground_truth": "Cmdline::new (cc_bindings_from_rs/cmdline.rs:211, crate cc_bindings_from_rs_cmdline, extern name cmdline); inside the closure at 26:18, cpp_api_from_rust_lib::run_with_cmdline_args (cc_bindings_from_rs/lib.rs:307); the rest are std, itertools and clap methods",
+        "atlas_n": "no callee; no reason",
+        "atlas_n_plus_1": "main -> cmdline.rs::new; closure@26:18 -> lib.rs::run_with_cmdline_args; the method calls on std/clap values stay unresolved",
+        "classification_n": "ATLAS defect, sound but silent: nothing false was claimed, but the file was never evaluated because its crate root was never found, and no lens said so (fixed in E13)",
+        "classification_n_plus_1": "ATLAS_CORRECT"
+      },
+      {
+        "question": "do crubit's crates have roots Atlas can reach?",
+        "ground_truth": "174 crate targets; 50 declare a path climbing out of their manifest's directory (cargo/**/Cargo.toml -> ../../../<source>.rs), all 50 existing once normalized",
+        "atlas_n": "the 50 climbing targets produced crate roots that matched no inventory path: their module trees were never evaluated",
+        "atlas_n_plus_1": "all 50 roots reached",
+        "classification_n": "ATLAS defect (fixed in E13)",
+        "classification_n_plus_1": "ATLAS_CORRECT"
+      },
+      {
+        "question": "which resources does crubit acquire and release across the FFI boundary?",
+        "ground_truth": "the Rust binaries call C++ entry points (crubit_rs_bindings_from_cc_main, rs_bindings_from_cc.rs:22 -> rs_bindings_from_cc.cc:116); common/token_stream_printer.rs spawns a child process and a writer thread (545) joined at 553",
+        "atlas_n": "no resource; 1 FFI declaration with a caller",
+        "atlas_n_plus_1": "the thread spawn and its JOIN release (DERIVED, correct); 2 FFI declarations with callers, the C++ definitions UNKNOWN; the child process is not a resource",
+        "classification_n_plus_1": "ATLAS_CORRECT for the thread; OUT_OF_SCOPE for the C++ side (no C/C++ frontend, DEBT-MULTILANGUAGE) and the child process (process handles are outside the std-path resource table)"
+      },
+      {
+        "question": "do crubit's dependency cycles through member dev-dependencies converge?",
+        "ground_truth": "yes: Cargo resolves them",
+        "atlas_n": "the dependency closure reaches Closed with a converged fixed point on the legacy checkout (the real-donor Cargo test, run at G163 with this checkout present)",
+        "atlas_n_plus_1": "unchanged",
+        "classification_n": "ATLAS_CORRECT (ADR 0004)"
+      },
+      {
+        "question": "where do crubit's 947 FOREIGN_FUNCTION declarations live?",
+        "ground_truth": "917 in generated golden files (expected bindings output checked in for tests, compiled by no Cargo crate), 20 in examples, 9 in support, 1 in rs_bindings_from_cc",
+        "atlas_n_plus_1": "counted, with 2 reached by callers; generated golden output is not distinguished from authored source",
+        "classification_n_plus_1": "UNDECIDABLE for Atlas today: nothing marks a file as generated expected output"
+      }
+    ]
+  },
+  "implementation": {
+    "mechanism_vs_implementation": "nothing of crubit is absorbed: its Bazel and Cargo trees, bindings generators and golden tests are studied only; the donor exposed an Atlas defect -- crate roots of manifests whose targets lie outside their directory were never found",
+    "change": "runtime census::resolution: target_path resolves a manifest target against its directory with . and .. collapsed, refusing a path above the repository root; crate_targets uses it for the library, binaries, build script and Cargo's defaults (ADR 0079)",
+    "falsification": "5 mutants killed (the escape refusal dropped twice, the . segment kept, the library and the binaries joined unnormalized); a synthetic fixture carries the climbing library, binary, renamed path dependency and the escaping target"
+  },
+  "n_vs_n_plus_1": {
+    "same_pin": "34c96fb368e1 (the whole workspace)",
+    "N": {
+      "functions": 11697,
+      "invokes": 154,
+      "supplies_data": 54,
+      "unresolved": 33587,
+      "resources": 0,
+      "type_records": 13201,
+      "effect_records": 1962,
+      "persistence_records": 15,
+      "peak_mb": 2514
+    },
+    "N_plus_1": {
+      "functions": 11697,
+      "invokes": 1657,
+      "supplies_data": 1316,
+      "unresolved": 31802,
+      "resources": 2,
+      "type_records": 13813,
+      "effect_records": 1996,
+      "persistence_records": 35,
+      "peak_mb": 2528
+    },
+    "what_atlas_n_saw": "every function, closure and async block with its syntax-level facts; resolution only inside the crates whose manifests sit beside their sources",
+    "what_atlas_n_missed": "every resolution in the 50 crates whose manifests live under cargo/ -- the bindings generators themselves -- and the reason",
+    "what_atlas_n_plus_1_sees": "154 -> 1,657 resolved INVOKES (all 154 kept, 1,503 new, 20 of 20 sampled correct), 54 -> 1,316 SUPPLIES_DATA, a thread acquire/release pair, the challenge answered",
+    "still_unknown": "the C++ half (1,628 files without a frontend), FFI definitions behind extern declarations, generated golden files indistinguishable from source, method calls on rustc's TyCtxt and other dependency types, child processes as resources, and why an unreached file's calls stay unresolved (the obligation says it; the lenses do not)",
+    "magnitude": "large on the donor (x10.8 resolved edges); Atlas Studio keeps its manifests beside their sources, so its self-census is unchanged"
+  },
+  "manual_reads": [
+    {
+      "what": "cc_bindings_from_rs/cc_bindings_from_rs.rs (37 lines)",
+      "why": "ground truth for the challenge question",
+      "gap": "crate roots of climbing manifests not found (fixed in E13)"
+    },
+    {
+      "what": "the 7 workspace manifests and cargo/cc_bindings_from_rs/{cmdline,cpp_api_from_rust_lib}/Cargo.toml",
+      "why": "find why no crate root reached the file",
+      "gap": "same"
+    },
+    {
+      "what": "common/token_stream_printer.rs 540-556; rs_bindings_from_cc/rs_bindings_from_cc.rs 10-22; rs_bindings_from_cc.cc:116",
+      "why": "falsify the new RESOURCE records and the FFI entry",
+      "gap": "none (verification); the C++ definition is outside every frontend"
+    },
+    {
+      "what": "the definitions and call sites of 20 sampled new edges",
+      "why": "falsify the new edges",
+      "gap": "none (verification)"
+    },
+    {
+      "what": "LICENSE at the pin",
+      "why": "license verification"
+    }
+  ],
+  "revalidation": {
+    "record": "none: crubit's historical verdicts (G118 CAPABILITY_OPEN_ESSENTIAL, mechanism DEFERRED) named the multi-language interop capability; the replay decides at E13",
+    "outcome": "DECIDED_AT_E13"
+  },
+  "decision": {
+    "donor": "REFERENCE_ONLY_UNTIL_TRIGGER at E13: crubit's bidirectional bindings generation (Rust <-> C++ through Clang and rustc, thunks, golden tests) is studied, not absorbed; Atlas has no C/C++ frontend to carry it",
+    "capability_delta": "CAPABILITY_ADVANCED (E12 -> E13)",
+    "trigger": "CURRENT; re-opened by a C or C++ frontend (DEBT-MULTILANGUAGE), FFI acquire/release pairs or process resources in the resource table (NA-RESOURCE-RESIDUAL), or generated files distinguished from authored source: re-census the same pin"
+  },
+  "extinction": {
+    "attempted": "rm -rf /home/user/Atlas-Studio/.atlas/.cache/donors/crubit; git rm -r .atlas/temporary/donors/crubit (2,786 tracked files, the admitted legacy checkout)",
+    "runtime_dependency": "none: Atlas does not depend on crubit (no package, no path); the crate-target change is Atlas's own code and fixture",
+    "evidence_retained": "this record: pin, license, Atlas_N mission, differential, N versus N+1; donor-corpus, provenance and frontier records EXTINCT / SOURCE_DELETED; the license copy at .atlas/licenses/crubit/; no crubit text in Atlas",
+    "path_absent_after": true,
+    "legacy_checkout_absent_after": true,
+    "status": "SOURCE_EXTINCT"
+  }
+}

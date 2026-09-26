@@ -2469,7 +2469,7 @@ version = "0.1.0"
         }
 
         // The aggregate was established across the multi-donor corpus; as replays extinguish the
-        // donors it shrinks by record (G162: zed, leaving crubit alone), the per-donor closure and
+        // donors it shrinks by record (G162: zed; G164: crubit, the last), the per-donor closure and
         // reachability assertions above still run on every donor left, and the synthetic fixtures
         // carry each shape the donors exposed.
         assert!(
@@ -2520,8 +2520,9 @@ version = "0.1.0"
             }
         }
 
-        // A corpus-wide existence check needs a corpus: with one donor left (G162) the classes
-        // are carried by the synthetic fixtures (a_git_dependency_is_classified_vcs_not_registry,
+        // A corpus-wide existence check needs a corpus: with fewer than two donors left (G162; none
+        // since G164) the classes are carried by the synthetic fixtures
+        // (a_git_dependency_is_classified_vcs_not_registry,
         // dev_and_build_dependency_tables_are_distinguished_from_plain_dependencies, the optional
         // and target-conditional tests, the path dependency of the workspace fixtures).
         if donors.len() < 2 {

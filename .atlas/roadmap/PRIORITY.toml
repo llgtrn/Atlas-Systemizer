@@ -727,7 +727,7 @@ objective = "owner-directed weight-artifact upgrade, NA-ARTIFACT-SEMANTICS-WEIGH
 [[planned_generation]]
 id = "G164"
 priority = "P0"
-objective = "FULL_OSS_REPLAY R8 google/crubit (QUEUED): Rust/C++ interop facing the strongest Atlas (E12 or later) -- FFI acquire/release pairs, cyclic dev-dependency graphs and import resolution on a real interop workspace; license verified at the pin; the admitted legacy checkout extinguished with it"
+objective = "FULL_OSS_REPLAY R8 google/crubit at 34c96fb368e1 (done: Atlas E12 censused the whole Rust/C++ interop workspace in 2.5 GB but resolved 154 of 33,946 calls -- 50 crates keep their manifests in a parallel cargo/ tree pointing at ../../../<source>.rs and no crate root reached them, silently; capability epoch E13 -- a crate root is its manifest target path normalized; the same pin 154 -> 1,657 INVOKES, 20 of 20 sampled correct; the C++ half, FFI resource pairs and generated golden files remain named gaps; REFERENCE_ONLY_UNTIL_TRIGGER; both copies of the source extinct; ADR 0079)"
 
 [[planned_generation]]
 id = "G165"
@@ -735,6 +735,11 @@ priority = "P0"
 objective = "native attack queue head (pressure map, dependency and construction-reachability order): NA-QUANTITY-SIDE-REPORTS (DEBT-QUANTITY_UNITS) -- physical and product reports enter the census: derived quantities as typed facts with kind and status, not side JSON"
 
 [[planned_generation]]
-id = "G166+"
+id = "G166"
+priority = "P0"
+objective = "FULL_OSS_REPLAY R9 huggingface/safetensors (QUEUED): the format donor facing the strongest Atlas (E13), whose SafeTensors reader (E12, G163) was written from the published description alone -- its Rust crate and test corpus falsify the W1 census and construction, its Python bindings are a second-language boundary; license verified at the pin"
+
+[[planned_generation]]
+id = "G167+"
 priority = "P0"
 objective = "FULL_OSS_REPLAY every other generation, interleaved with the native_attack_queue in order (ESSENTIAL-COMPLEXITY-DEBT.toml; the weight stages NA-WEIGHT-CENSUS-RECORDS, NA-WEIGHT-ROLES, NA-WEIGHT-TRANSFORMS and NA-WEIGHT-FORMATS take their place in it, each weight format after its donor replay), SELF_RECONSTRUCTION (NA-SELF-RECONSTRUCTION-BODIES, then SH1 on the next target) and an AGENT_MISSION at least every five generations; frontier expansion stays frozen until FOUNDATIONAL_ATLAS_READY"

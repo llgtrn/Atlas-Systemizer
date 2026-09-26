@@ -13,7 +13,7 @@
 #       -> generation evidence -> G_n+1
 
 schema = "atlas.self-build.generation-ledger.v1"
-current_generation = "G163"
+current_generation = "G164"
 
 [[generation]]
 id = "G35"
@@ -3756,4 +3756,47 @@ after = 5080
 [[generation.metric]]
 key = "artifacts"
 before = 155
+after = 161
+
+[[generation]]
+id = "G164"
+kind = "REPLAY"
+base_commit = "7b472956e4b665debf1fdc0ae19d2a2475ef63e1"
+priority = "P0"
+serves = "FULL_OSS_REPLAY R8: Rust/C++ interop facing the strongest Atlas (E12), at its admitted legacy pin; DEBT-CALL advanced"
+objective = "replay crubit at the exact pin of its admitted legacy checkout: Atlas_N first on the whole workspace, a falsifiable question about what its bindings generator reaches, one bounded Atlas-native improvement, the same pin at N+1, both copies of the source extinct"
+writer = "coordinator (sole writer)"
+replay = "google/crubit"
+pinned_commit = "34c96fb368e1a734c06425172f810ca1371eb705"
+source_path = ".atlas/.cache/donors/crubit"
+epoch_before = "E12"
+epoch_after = "E13"
+mission = ".atlas/evidence/replay/R8-crubit.json"
+evidence = ".atlas/evidence/replay/R8-crubit.json"
+self_recensus = ".atlas/evidence/census/G164/recensus.json"
+
+[generation.verification]
+pre_census = "G163 post digest"
+atlas_first = "the whole workspace censused in 2,514 MB and 22 s: 11,697 functions, 33,946 call records, 154 resolved INVOKES; cc_bindings_from_rs main with 6 unresolved call sites and its closure with 1, depends_on empty, and neither explain nor unknowns saying why"
+change = "runtime census::resolution: target_path resolves a manifest target (lib, bin, build, Cargo defaults) against the manifest directory with . and .. collapsed and refuses a path above the repository root; crate_targets roots every target through it (ADR 0079)"
+oracle = "the crubit source at the pin (ORACLE_READ) and Cargo's rule that a target path is relative to its manifest: 50 of 174 crate targets climb out of their manifest directory and all 50 exist once normalized; the challenge answered -- main -> Cmdline::new (cmdline.rs:211), its closure -> run_with_cmdline_args (lib.rs:307); 20 of 1,503 new edges sampled, all correct; the thread spawn and join checked at token_stream_printer.rs 545 and 553"
+falsification = "5 mutants killed (the escape refusal dropped twice, the . segment kept, the library and the binaries joined unnormalized); a synthetic fixture carries a climbing library and binary, a renamed path dependency bound through the normalized root, and an escaping target"
+boundary = "C and C++ (1,628 files) have no frontend: FFI definitions behind extern declarations stay UNKNOWN; child processes and FFI pairs are outside the resource table; generated golden files are not distinguished from authored source; an unreached file's calls are unexplained in the lenses"
+debts = "DEBT-CALL last advance G164; capability epoch E13; GitNexus, tree-sitter, salsa, xyflow and zed re-checked CURRENT at E13; MANIFEST_TARGETS_NORMALIZED milestone for historical Rust donors; next replay huggingface/safetensors G166; native head NA-QUANTITY-SIDE-REPORTS planned G165"
+review = "2 debts reviewed at their cadence: DEBT-INTEGRITY_ENVELOPE corrected (its next attack named the done NA-SEAL-GATE, which consumes the report since G161), DEBT-SEMANTIC-COMPOSITION corrected (resources compose since G157) (evidence/census/G164/debt-review.json)"
+proof = "PROVEN (post 8897f64a...): no unexplained UNKNOWN; the pinned clone and the tracked legacy checkout (2,786 files) deleted before the recensus"
+
+[[generation.metric]]
+key = "records:CALL|atlas.resolution.rust-paths"
+before = 7091
+after = 7095
+
+[[generation.metric]]
+key = "composed:relation:INVOKES"
+before = 5080
+after = 5085
+
+[[generation.metric]]
+key = "artifacts"
+before = 161
 after = 161
