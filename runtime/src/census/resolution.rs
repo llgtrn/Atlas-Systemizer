@@ -77,6 +77,25 @@ fn identity() -> ExtractorIdentity {
     }
 }
 
+/// A manifest target path (`[lib] path`, `[[bin]] path`, `build`) resolved against the manifest's
+/// directory, `.` and `..` segments collapsed, as an inventory path (G164, replay R8: crubit keeps
+/// its manifests under `cargo/` and points every target at `../../../<source>.rs`). `None` when
+/// the path climbs above the repository root: such a target is never a workspace source.
+fn target_path(dir: &str, relative: &str) -> Option<String> {
+    let joined = join(dir, relative);
+    let mut parts: Vec<&str> = Vec::new();
+    for part in joined.split('/') {
+        match part {
+            "" | "." => {}
+            ".." => {
+                parts.pop()?;
+            }
+            other => parts.push(other),
+        }
+    }
+    Some(parts.join("/"))
+}
+
 /// Every workspace crate target (library, binaries, build script) with the extern-prelude names
 /// of the workspace libraries it may use, from the package manifests in `sources`' inventory.
 pub fn crate_targets(
@@ -94,8 +113,9 @@ pub fn crate_targets(
                 .strip_suffix("Cargo.toml")?
                 .trim_end_matches('/')
                 .to_owned();
-            let targets =
-                adapter::manifest_targets(text, |rel| sources.contains_key(&join(&dir, rel)))?;
+            let targets = adapter::manifest_targets(text, |rel| {
+                target_path(&dir, rel).is_some_and(|path| sources.contains_key(&path))
+            })?;
             Some(Package { dir, targets })
         })
         .collect();
@@ -104,26 +124,30 @@ pub fn crate_targets(
     let mut libs: BTreeMap<String, usize> = BTreeMap::new();
     let mut kinds: Vec<(usize, bool)> = Vec::new(); // (package index, is build script)
     for (index, package) in packages.iter().enumerate() {
-        if let Some(lib) = &package.targets.lib {
+        if let Some(root) =
+            (package.targets.lib.as_deref()).and_then(|l| target_path(&package.dir, l))
+        {
             libs.insert(package.targets.package.clone(), crates.len());
             crates.push(CrateInput {
-                root: join(&package.dir, lib),
+                root,
                 externs: BTreeMap::new(),
             });
             kinds.push((index, false));
         }
     }
     for (index, package) in packages.iter().enumerate() {
-        for bin in &package.targets.bins {
+        for root in (package.targets.bins.iter()).filter_map(|b| target_path(&package.dir, b)) {
             crates.push(CrateInput {
-                root: join(&package.dir, bin),
+                root,
                 externs: BTreeMap::new(),
             });
             kinds.push((index, false));
         }
-        if let Some(build) = &package.targets.build {
+        if let Some(root) =
+            (package.targets.build.as_deref()).and_then(|b| target_path(&package.dir, b))
+        {
             crates.push(CrateInput {
-                root: join(&package.dir, build),
+                root,
                 externs: BTreeMap::new(),
             });
             kinds.push((index, true));

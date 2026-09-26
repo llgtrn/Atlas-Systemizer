@@ -65,6 +65,61 @@ fn crate_targets_follow_manifests_renames_roles_and_own_library() {
     );
 }
 
+/// G164 (replay R8, crubit): a manifest may keep its targets outside its own directory
+/// (`cargo/x/Cargo.toml` with `[lib] path = "../../x.rs"`); the crate root is the normalized
+/// inventory path, its dependencies bind through it, and a target climbing above the repository
+/// root is no crate at all.
+#[test]
+fn crate_targets_normalize_climbing_target_paths_and_refuse_escapes() {
+    let manifests = map(&[
+        (
+            "cargo/tool/Cargo.toml",
+            "[package]\nname = \"tool\"\n\n[[bin]]\nname = \"tool\"\npath = \"../../tool/./main.rs\"\n\n[dependencies]\ncmdline = { path = \"../cmdline\", package = \"tool_cmdline\" }\n",
+        ),
+        (
+            "cargo/cmdline/Cargo.toml",
+            "[package]\nname = \"tool_cmdline\"\n\n[lib]\npath = \"../../tool/cmdline.rs\"\n",
+        ),
+        (
+            "cargo/escape/Cargo.toml",
+            "[package]\nname = \"escape\"\n\n[lib]\npath = \"../../../outside.rs\"\n",
+        ),
+    ]);
+    let sources = map(&[
+        ("tool/main.rs", ""),
+        ("tool/cmdline.rs", ""),
+        ("outside.rs", ""),
+    ]);
+    let crates = crate_targets(&manifests, &sources);
+    let described: Vec<(String, Vec<(String, String)>)> = crates
+        .iter()
+        .map(|c| {
+            (
+                c.root.clone(),
+                c.externs
+                    .iter()
+                    .map(|(name, index)| (name.clone(), crates[*index].root.clone()))
+                    .collect(),
+            )
+        })
+        .collect();
+    let s = |v: &str| v.to_owned();
+    assert_eq!(
+        described,
+        [
+            (s("tool/cmdline.rs"), vec![]),
+            (
+                s("tool/main.rs"),
+                vec![(s("cmdline"), s("tool/cmdline.rs"))]
+            ),
+        ]
+    );
+    assert_eq!(target_path("a/b", "../../c.rs").as_deref(), Some("c.rs"));
+    assert_eq!(target_path("a", "./b/../c.rs").as_deref(), Some("a/c.rs"));
+    assert_eq!(target_path("a", "../../c.rs"), None);
+    assert_eq!(target_path("", "src/lib.rs").as_deref(), Some("src/lib.rs"));
+}
+
 fn artifact(path: &str, language: &str) -> ArtifactRecord {
     ArtifactRecord {
         id: ArtifactId::new(format!("artifact:{path}")),
