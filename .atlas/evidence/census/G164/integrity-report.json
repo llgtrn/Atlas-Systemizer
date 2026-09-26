@@ -1,0 +1,171 @@
+{
+  "schema_version": "atlas.architectural-integrity-report.v1",
+  "report_id": "report:blake3-256:db5f662724b09736a556fe51e8023d81dcc6189ccc8730fc32f9df1f9d90f10b",
+  "candidate_ref": "revision:a5c86ad333332ec7e016100b667485805b523e20",
+  "materialization_ref": null,
+  "envelope_ref": "envelope:blake3-256:59c928fb89a41c805f1e7c656a7b9f5e6858c584600864a5870d05acc49b7be5",
+  "observed_architecture_root": "blake3-256:8897f64a221896fd77cd494bc0ce0a3dc1bcbc8ebfa74882b8597674a5842108",
+  "impact_closure": {
+    "closed": true,
+    "affected_semantic_refs": [],
+    "affected_invariant_refs": [
+      "AIE:AdapterCallsNoCli",
+      "AIE:AdapterCallsNoRuntime",
+      "AIE:AdapterEffectEnvelope",
+      "AIE:AtlasCliEffectEnvelope",
+      "AIE:CoreCallsNoAdapter",
+      "AIE:CoreCallsNoCli",
+      "AIE:CoreCallsNoRuntime",
+      "AIE:CoreEffectEnvelope",
+      "AIE:DeclaredDependency:Adapter->Core",
+      "AIE:DeclaredDependency:AtlasCli->Runtime",
+      "AIE:DeclaredDependency:Runtime->Adapter",
+      "AIE:DeclaredDependency:Runtime->Core",
+      "AIE:DeclaredDependency:WebUI->Runtime",
+      "AIE:RuntimeCallsNoCli",
+      "AIE:RuntimeEffectEnvelope"
+    ],
+    "closure_root": "FULL_RECOMPUTE"
+  },
+  "evaluations": [
+    {
+      "invariant_ref": "AIE:AdapterCallsNoCli",
+      "status": "PASS",
+      "evidence_refs": [
+        "AIE:AdapterCallsNoCli",
+        "adl:AdapterCallsNoCli"
+      ],
+      "details": "no Cargo dependency path from Adapter to AtlasCli (INV-DEPENDENCY:Adapter->AtlasCli, OBSERVED): no call site, resolved or not, can reach AtlasCli"
+    },
+    {
+      "invariant_ref": "AIE:AdapterCallsNoRuntime",
+      "status": "PASS",
+      "evidence_refs": [
+        "AIE:AdapterCallsNoRuntime",
+        "adl:AdapterCallsNoRuntime"
+      ],
+      "details": "no Cargo dependency path from Adapter to Runtime (INV-DEPENDENCY:Adapter->Runtime, OBSERVED): no call site, resolved or not, can reach Runtime"
+    },
+    {
+      "invariant_ref": "AIE:AdapterEffectEnvelope",
+      "status": "PASS",
+      "evidence_refs": [
+        "AIE:AdapterEffectEnvelope",
+        "adl:AdapterEffectEnvelope"
+      ],
+      "details": "all 244 definite (OBSERVED or DERIVED) effect sites of Adapter's 1854 functions are within the envelope (CLOCK_READ, ENVIRONMENT_READ, FILESYSTEM_READ, FILESYSTEM_WRITE); not covered by the claim: 1216 INFERRED effect sites and 37 files of Adapter where EFFECT is not OBSERVED"
+    },
+    {
+      "invariant_ref": "AIE:AtlasCliEffectEnvelope",
+      "status": "PASS",
+      "evidence_refs": [
+        "AIE:AtlasCliEffectEnvelope",
+        "adl:AtlasCliEffectEnvelope"
+      ],
+      "details": "all 36 definite (OBSERVED or DERIVED) effect sites of AtlasCli's 167 functions are within the envelope (CLOCK_READ, ENVIRONMENT_READ, FILESYSTEM_READ, FILESYSTEM_WRITE); not covered by the claim: 13 INFERRED effect sites and 1 files of AtlasCli where EFFECT is not OBSERVED"
+    },
+    {
+      "invariant_ref": "AIE:CoreCallsNoAdapter",
+      "status": "PASS",
+      "evidence_refs": [
+        "AIE:CoreCallsNoAdapter",
+        "adl:CoreCallsNoAdapter"
+      ],
+      "details": "no Cargo dependency path from Core to Adapter (INV-DEPENDENCY:Core->Adapter, OBSERVED): no call site, resolved or not, can reach Adapter"
+    },
+    {
+      "invariant_ref": "AIE:CoreCallsNoCli",
+      "status": "PASS",
+      "evidence_refs": [
+        "AIE:CoreCallsNoCli",
+        "adl:CoreCallsNoCli"
+      ],
+      "details": "no Cargo dependency path from Core to AtlasCli (INV-DEPENDENCY:Core->AtlasCli, OBSERVED): no call site, resolved or not, can reach AtlasCli"
+    },
+    {
+      "invariant_ref": "AIE:CoreCallsNoRuntime",
+      "status": "PASS",
+      "evidence_refs": [
+        "AIE:CoreCallsNoRuntime",
+        "adl:CoreCallsNoRuntime"
+      ],
+      "details": "no Cargo dependency path from Core to Runtime (INV-DEPENDENCY:Core->Runtime, OBSERVED): no call site, resolved or not, can reach Runtime"
+    },
+    {
+      "invariant_ref": "AIE:CoreEffectEnvelope",
+      "status": "PASS",
+      "evidence_refs": [
+        "AIE:CoreEffectEnvelope",
+        "adl:CoreEffectEnvelope"
+      ],
+      "details": "all 1 definite (OBSERVED or DERIVED) effect sites of Core's 2679 functions are within the envelope (CLOCK_READ); not covered by the claim: 1475 INFERRED effect sites and 82 files of Core where EFFECT is not OBSERVED"
+    },
+    {
+      "invariant_ref": "AIE:DeclaredDependency:Adapter->Core",
+      "status": "PASS",
+      "evidence_refs": [
+        "AIE:DeclaredDependency:Adapter->Core",
+        "adl:DeclaredDependency:Adapter->Core"
+      ]
+    },
+    {
+      "invariant_ref": "AIE:DeclaredDependency:AtlasCli->Runtime",
+      "status": "PASS",
+      "evidence_refs": [
+        "AIE:DeclaredDependency:AtlasCli->Runtime",
+        "adl:DeclaredDependency:AtlasCli->Runtime"
+      ]
+    },
+    {
+      "invariant_ref": "AIE:DeclaredDependency:Runtime->Adapter",
+      "status": "PASS",
+      "evidence_refs": [
+        "AIE:DeclaredDependency:Runtime->Adapter",
+        "adl:DeclaredDependency:Runtime->Adapter"
+      ]
+    },
+    {
+      "invariant_ref": "AIE:DeclaredDependency:Runtime->Core",
+      "status": "PASS",
+      "evidence_refs": [
+        "AIE:DeclaredDependency:Runtime->Core",
+        "adl:DeclaredDependency:Runtime->Core"
+      ]
+    },
+    {
+      "invariant_ref": "AIE:DeclaredDependency:WebUI->Runtime",
+      "status": "UNKNOWN",
+      "evidence_refs": [
+        "AIE:DeclaredDependency:WebUI->Runtime"
+      ],
+      "details": "no decided result for adl:DeclaredDependency:WebUI->Runtime: the census could not evaluate it"
+    },
+    {
+      "invariant_ref": "AIE:RuntimeCallsNoCli",
+      "status": "PASS",
+      "evidence_refs": [
+        "AIE:RuntimeCallsNoCli",
+        "adl:RuntimeCallsNoCli"
+      ],
+      "details": "no Cargo dependency path from Runtime to AtlasCli (INV-DEPENDENCY:Runtime->AtlasCli, OBSERVED): no call site, resolved or not, can reach AtlasCli"
+    },
+    {
+      "invariant_ref": "AIE:RuntimeEffectEnvelope",
+      "status": "PASS",
+      "evidence_refs": [
+        "AIE:RuntimeEffectEnvelope",
+        "adl:RuntimeEffectEnvelope"
+      ],
+      "details": "all 250 definite (OBSERVED or DERIVED) effect sites of Runtime's 1476 functions are within the envelope (CLOCK_READ, ENVIRONMENT_READ, FILESYSTEM_READ, FILESYSTEM_WRITE); not covered by the claim: 1399 INFERRED effect sites and 28 files of Runtime where EFFECT is not OBSERVED"
+    }
+  ],
+  "hard_violation_count": 0,
+  "required_unknown_count": 0,
+  "load_bearing_equivalence_closed": true,
+  "blueprint_revision_ref": null,
+  "verdict": "ELIGIBLE",
+  "evidence_refs": [
+    "envelope:blake3-256:59c928fb89a41c805f1e7c656a7b9f5e6858c584600864a5870d05acc49b7be5",
+    "blake3-256:8897f64a221896fd77cd494bc0ce0a3dc1bcbc8ebfa74882b8597674a5842108"
+  ]
+}

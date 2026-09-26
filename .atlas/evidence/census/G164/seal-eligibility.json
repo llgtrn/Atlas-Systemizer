@@ -1,0 +1,65 @@
+{
+  "schema": "atlas.seal-eligibility.v1",
+  "scope": "atlas-self",
+  "policy_id": "blake3-256:9e68506f5e5ddec0ce3feaf490a998fcd71d288bada8c977e58c21cc039f4e41",
+  "verdict": "NOT_ELIGIBLE",
+  "reasons": [
+    [
+      "CERTIFICATE_NOT_CLOSED",
+      "certificate state RECONCILED"
+    ],
+    [
+      "CERTIFICATE_BLOCKERS_REFUSED",
+      "COVERAGE_UNKNOWN: CALL: required clear"
+    ],
+    [
+      "CERTIFICATE_BLOCKERS_REFUSED",
+      "COVERAGE_UNKNOWN: CONCURRENCY: required clear"
+    ],
+    [
+      "CERTIFICATE_BLOCKERS_REFUSED",
+      "COVERAGE_UNKNOWN: CONTROL_FLOW: required clear"
+    ],
+    [
+      "CERTIFICATE_BLOCKERS_REFUSED",
+      "COVERAGE_UNKNOWN: DATA_FLOW: required clear"
+    ],
+    [
+      "CERTIFICATE_BLOCKERS_REFUSED",
+      "COVERAGE_UNKNOWN: EFFECT: required clear"
+    ],
+    [
+      "CERTIFICATE_BLOCKERS_REFUSED",
+      "COVERAGE_UNKNOWN: OWNERSHIP: required clear"
+    ],
+    [
+      "CERTIFICATE_BLOCKERS_REFUSED",
+      "COVERAGE_UNKNOWN: PERSISTENCE: required clear"
+    ],
+    [
+      "CERTIFICATE_BLOCKERS_REFUSED",
+      "COVERAGE_UNKNOWN: RESOURCE: required clear"
+    ],
+    [
+      "CERTIFICATE_BLOCKERS_REFUSED",
+      "COVERAGE_UNKNOWN: STATE: required clear"
+    ],
+    [
+      "CERTIFICATE_BLOCKERS_REFUSED",
+      "MULTI_ENGINE_RECONCILIATION_ABSENT: one engine for CONTROL_FLOW, DATA_FLOW, FUNCTION_IDENTITY, FUNCTION_SIGNATURE, OWNERSHIP, RESOURCE, STATE, SYMBOL (Genome: multi_engine_reconciliation_required): required clear"
+    ],
+    [
+      "CERTIFICATE_BLOCKERS_REFUSED",
+      "UNKNOWN_FACTS: 1854: required clear"
+    ],
+    [
+      "CERTIFICATE_BLOCKERS_REFUSED",
+      "UNSUPPORTED_FACTS: 386: required clear"
+    ],
+    [
+      "DESIGN_ABSENT",
+      "no SelectedDesign names this container"
+    ]
+  ],
+  "record": null
+}
